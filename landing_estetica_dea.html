@@ -1,0 +1,1564 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Addio Cellulite – Centro Estetica Dea | Orzinuovi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    /* Palette ispirata a Estetica Dea — champagne, nude, avorio */
+    --rose:      #9E6B72;   /* cipria profondo — accento principale */
+    --rose-light:#E8D5CF;   /* blush nude chiaro                    */
+    --cream:     #F7F3EE;   /* avorio caldo — sfondo pagina         */
+    --sand:      #E6DDD3;   /* sabbia — card e separatori           */
+    --espresso:  #28211E;   /* charcoal caldo — testi forti         */
+    --taupe:     #7A6E66;   /* grigio-nude — testi secondari        */
+    --gold:      #C9A870;   /* oro champagne — accento lusso        */
+    --white:     #FFFFFF;
+    --champagne: #F2EBE2;   /* champagne — sezioni alternate        */
+    --charcoal:  #2A2320;   /* per sezioni scure                    */
+  }
+
+  html { scroll-behavior: smooth; }
+
+  /* ─── WHATSAPP BUTTON ─────────────────────────────── */
+  .wa-fab {
+    position: fixed;
+    right: 20px;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #25D366;
+    color: #fff;
+    text-decoration: none;
+    box-shadow: 0 6px 24px rgba(37,211,102,.45);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: .01em;
+    transition: transform .2s, box-shadow .2s;
+    white-space: nowrap;
+  }
+  .wa-fab:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 32px rgba(37,211,102,.55);
+  }
+  .wa-fab svg {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+  }
+  /* Desktop: pill con testo */
+  @media (min-width: 640px) {
+    .wa-fab {
+      bottom: 32px;
+      border-radius: 50px;
+      padding: 13px 20px 13px 16px;
+    }
+    .wa-fab .wa-label { display: inline; }
+  }
+  /* Mobile: cerchio solo icona, sopra la sticky CTA */
+  @media (max-width: 639px) {
+    .wa-fab {
+      bottom: 76px;
+      border-radius: 50%;
+      padding: 14px;
+      width: 52px;
+      height: 52px;
+      justify-content: center;
+    }
+    .wa-fab .wa-label { display: none; }
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--espresso);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ─── URGENCY BAR ─────────────────────────────────── */
+  .urgency-bar {
+    background: var(--espresso);
+    color: var(--rose-light);
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: .04em;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+  }
+  .urgency-bar span { color: var(--gold); font-weight: 700; }
+  #timer { color: #fff; font-weight: 700; font-size: 14px; }
+
+  /* ─── HERO ────────────────────────────────────────── */
+  .hero {
+    background: linear-gradient(160deg, #F2EBE2 0%, #EDE3D8 50%, #E6DBD0 100%);
+    color: var(--espresso);
+    padding: 70px 24px 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.02'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+  .hero-label {
+    display: inline-block;
+    background: var(--champagne);
+    color: var(--rose);
+    border: 1px solid var(--rose-light);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 22px;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 6vw, 46px);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 18px;
+    color: var(--espresso);
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--rose);
+  }
+  .hero-sub {
+    font-size: clamp(15px, 3vw, 18px);
+    color: var(--taupe);
+    max-width: 560px;
+    margin: 0 auto 30px;
+    font-weight: 300;
+  }
+  .hero-price {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-bottom: 32px;
+  }
+  .price-old {
+    font-size: 20px;
+    color: #b0a09a;
+    text-decoration: line-through;
+    font-weight: 300;
+  }
+  .price-new {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    color: var(--gold);
+    font-weight: 700;
+  }
+  .price-duration {
+    font-size: 12px;
+    color: var(--taupe);
+    line-height: 1.4;
+    text-align: left;
+  }
+
+  /* ─── CTA BUTTON ──────────────────────────────────── */
+  .btn-primary {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--rose) 0%, #7A5058 100%);
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 18px 38px;
+    border-radius: 50px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 8px 30px rgba(158,107,114,.40);
+    letter-spacing: .02em;
+    transition: transform .2s, box-shadow .2s;
+    width: 100%;
+    max-width: 380px;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(158,107,114,.50); }
+  .btn-micro {
+    font-size: 12px;
+    color: var(--taupe);
+    margin-top: 10px;
+    display: block;
+    text-align: center;
+  }
+
+  /* ─── TRUST BAR ───────────────────────────────────── */
+  .trust-bar {
+    background: var(--white);
+    border-bottom: 1px solid var(--sand);
+    padding: 18px 24px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 24px;
+    text-align: center;
+  }
+  .trust-item {
+    font-size: 12px;
+    color: var(--taupe);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .trust-item strong { color: var(--espresso); }
+
+  /* ─── SECTIONS ────────────────────────────────────── */
+  section { padding: 60px 24px; max-width: 640px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 10px;
+    display: block;
+  }
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(24px, 5vw, 34px);
+    font-weight: 600;
+    line-height: 1.25;
+    margin-bottom: 20px;
+    color: var(--espresso);
+  }
+  h2 em { font-style: italic; color: var(--rose); }
+
+  /* ─── PROBLEMA ────────────────────────────────────── */
+  .problema { background: var(--white); padding: 60px 24px; }
+  .problema-inner { max-width: 640px; margin: 0 auto; }
+  .pain-list {
+    list-style: none;
+    margin: 28px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .pain-list li {
+    background: var(--cream);
+    border-left: 3px solid var(--rose);
+    padding: 14px 18px;
+    border-radius: 0 8px 8px 0;
+    font-size: 15px;
+    color: var(--espresso);
+  }
+  .problema-bridge {
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--espresso);
+    margin-top: 28px;
+    font-style: italic;
+    font-family: 'Playfair Display', serif;
+    border-top: 1px solid var(--sand);
+    padding-top: 24px;
+  }
+
+  /* ─── CHI SONO ────────────────────────────────────── */
+  .chi-sono { background: var(--cream); }
+  .chi-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-shadow: 0 4px 30px rgba(40,33,30,.07);
+  }
+  .chi-avatar {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--rose-light), var(--sand));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    color: var(--rose);
+    flex-shrink: 0;
+  }
+  .chi-body p { font-size: 15px; color: var(--taupe); line-height: 1.7; }
+  .chi-body p strong { color: var(--espresso); }
+  .chi-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+  }
+  .badge {
+    background: var(--cream);
+    border: 1px solid var(--sand);
+    border-radius: 20px;
+    padding: 5px 12px;
+    font-size: 12px;
+    color: var(--taupe);
+    font-weight: 500;
+  }
+
+  /* ─── SOLUZIONE ───────────────────────────────────── */
+  .soluzione { background: var(--espresso); color: #fff; padding: 60px 24px; }
+  .soluzione-inner { max-width: 640px; margin: 0 auto; }
+  .soluzione h2 { color: var(--rose-light); }
+  .soluzione h2 em { color: var(--gold); }
+  .benefit-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin: 28px 0;
+  }
+  .benefit-card {
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 14px;
+    padding: 18px 16px;
+  }
+  .benefit-icon { font-size: 22px; margin-bottom: 8px; }
+  .benefit-card h4 { font-size: 13px; font-weight: 700; color: var(--gold); margin-bottom: 4px; letter-spacing: .03em; }
+  .benefit-card p { font-size: 13px; color: #A09088; line-height: 1.5; }
+  .zone-tag {
+    background: rgba(158,107,114,.12);
+    border: 1px solid var(--rose);
+    border-radius: 6px;
+    padding: 12px 18px;
+    font-size: 14px;
+    color: var(--rose-light);
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  /* ─── OFFERTA ─────────────────────────────────────── */
+  .offerta { background: var(--cream); }
+  .offer-box {
+    background: var(--white);
+    border: 2px solid var(--rose-light);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(40,33,30,.1);
+  }
+  .offer-header {
+    background: linear-gradient(135deg, var(--rose) 0%, #7A5058 100%);
+    padding: 24px 28px;
+    text-align: center;
+    color: #fff;
+  }
+  .offer-header h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .offer-header p { font-size: 13px; opacity: .85; }
+  .offer-body { padding: 28px; }
+  .offer-price-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 28px;
+    padding-bottom: 24px;
+    border-bottom: 1px dashed var(--sand);
+  }
+  .offer-old { font-size: 22px; color: #bbb; text-decoration: line-through; }
+  .offer-new { font-family: 'Playfair Display', serif; font-size: 52px; color: var(--rose); font-weight: 700; }
+  .offer-save {
+    background: var(--espresso);
+    color: var(--gold);
+    border-radius: 8px;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .06em;
+  }
+  .include-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .include-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .include-check {
+    width: 26px;
+    height: 26px;
+    background: var(--rose-light);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .include-text h4 { font-size: 14px; font-weight: 700; color: var(--espresso); margin-bottom: 2px; }
+  .include-text p { font-size: 13px; color: var(--taupe); line-height: 1.5; }
+  .omaggio {
+    background: linear-gradient(135deg, var(--champagne), #EDE3D8);
+    border: 1px dashed var(--rose);
+    border-radius: 12px;
+    padding: 16px 18px;
+    font-size: 14px;
+    color: var(--espresso);
+    margin-bottom: 28px;
+    text-align: center;
+  }
+  .durata {
+    text-align: center;
+    font-size: 13px;
+    color: var(--taupe);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  /* ─── FORM ────────────────────────────────────────── */
+  .form-section { background: var(--espresso); padding: 60px 24px; }
+  .form-inner { max-width: 540px; margin: 0 auto; text-align: center; }
+  .form-inner h2 { color: var(--rose-light); margin-bottom: 8px; }
+  .form-sub { color: #A09890; font-size: 15px; margin-bottom: 32px; }
+  .form-box {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 32px 28px;
+  }
+  .form-group { margin-bottom: 16px; text-align: left; }
+  .form-group label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--taupe);
+    margin-bottom: 7px;
+  }
+  .form-group input {
+    width: 100%;
+    border: 1.5px solid var(--sand);
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    color: var(--espresso);
+    background: var(--cream);
+    outline: none;
+    transition: border-color .2s;
+  }
+  .form-group input:focus { border-color: var(--rose); }
+  .privacy-note {
+    font-size: 11px;
+    color: var(--taupe);
+    margin-top: 14px;
+    line-height: 1.6;
+  }
+  .privacy-note a { color: var(--rose); text-decoration: underline; }
+  .form-success {
+    display: none;
+    text-align: center;
+    padding: 20px;
+  }
+  .form-success .success-icon { font-size: 50px; margin-bottom: 14px; }
+  .form-success h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    color: var(--espresso);
+    margin-bottom: 10px;
+  }
+  .form-success p { color: var(--taupe); font-size: 15px; }
+
+  /* ─── FAQ ─────────────────────────────────────────── */
+  .faq { background: var(--cream); }
+  .faq-list { display: flex; flex-direction: column; gap: 12px; margin-top: 32px; }
+  .faq-item {
+    background: var(--white);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(40,33,30,.06);
+  }
+  .faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 18px 22px;
+    text-align: left;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--espresso);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+  .faq-icon { font-size: 20px; transition: transform .3s; color: var(--rose); flex-shrink: 0; }
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .35s ease;
+  }
+  .faq-answer p {
+    padding: 0 22px 18px;
+    font-size: 14px;
+    color: var(--taupe);
+    line-height: 1.7;
+  }
+  .faq-item.open .faq-icon { transform: rotate(45deg); }
+  .faq-item.open .faq-answer { max-height: 200px; }
+
+  /* ─── FINAL CTA ───────────────────────────────────── */
+  .final-cta {
+    background: linear-gradient(135deg, #2A2320 0%, #3D3028 100%);
+    padding: 60px 24px;
+    text-align: center;
+  }
+  .final-cta h2 {
+    font-family: 'Playfair Display', serif;
+    color: #fff;
+    font-size: clamp(24px, 5vw, 36px);
+    margin-bottom: 12px;
+  }
+  .final-cta p { color: rgba(255,255,255,.75); margin-bottom: 32px; font-size: 16px; max-width: 480px; margin-left: auto; margin-right: auto; }
+
+  /* ─── FOOTER ──────────────────────────────────────── */
+  footer {
+    background: #1E1915;
+    padding: 24px;
+    text-align: center;
+    font-size: 12px;
+    color: #6A6058;
+    line-height: 2;
+  }
+  footer a { color: #9A9088; text-decoration: underline; }
+
+  /* ─── STICKY CTA MOBILE ───────────────────────────── */
+  .sticky-cta {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--espresso);
+    padding: 14px 20px;
+    z-index: 998;
+    box-shadow: 0 -4px 20px rgba(0,0,0,.25);
+    text-align: center;
+  }
+  .sticky-cta a {
+    display: block;
+    background: linear-gradient(135deg, var(--rose), #7A5058);
+    color: #fff;
+    border-radius: 10px;
+    padding: 14px;
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+  }
+
+  @media (max-width: 600px) {
+    .benefit-grid { grid-template-columns: 1fr; }
+    .sticky-cta { display: block; }
+    body { padding-bottom: 80px; }
+    .hero { padding: 50px 20px 50px; }
+  }
+
+  /* ─── HOTSPOT IMAGE ──────────────────────────────── */
+  .hotspot-section {
+    background: var(--espresso);
+    padding: 60px 24px;
+  }
+  .hotspot-inner { max-width: 640px; margin: 0 auto; }
+  .hotspot-inner h2 { color: var(--rose-light); margin-bottom: 8px; }
+  .hotspot-inner .section-label { color: #9a8480; }
+  .hotspot-intro { color: #A09890; font-size: 15px; margin-bottom: 32px; }
+  .hotspot-wrap {
+    position: relative;
+    border-radius: 24px;
+    overflow: visible;
+    background: linear-gradient(160deg, #2A2320 0%, #3D3528 100%);
+    border: 1px solid rgba(255,255,255,.08);
+  }
+  /* SVG body illustration placeholder */
+  .body-illustration {
+    display: block;
+    width: 100%;
+    max-width: 380px;
+    margin: 0 auto;
+    height: 420px;
+  }
+  /* Hotspot button */
+  .hspot {
+    position: absolute;
+    width: 34px;
+    height: 34px;
+    background: var(--rose);
+    border: 3px solid #fff;
+    border-radius: 50%;
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 0 6px rgba(158,107,114,.3);
+    transition: transform .2s, box-shadow .2s;
+    z-index: 10;
+    border: none;
+    animation: pulse-dot 2.2s infinite;
+  }
+  .hspot:hover, .hspot.active { transform: translate(-50%,-50%) scale(1.15); box-shadow: 0 0 0 10px rgba(158,107,114,.25); }
+  @keyframes pulse-dot {
+    0%,100% { box-shadow: 0 0 0 4px rgba(158,107,114,.4); }
+    50%      { box-shadow: 0 0 0 10px rgba(158,107,114,.1); }
+  }
+  /* Popup card — bottom sheet on mobile, floating on desktop */
+  .hspot-popup {
+    display: none;
+    pointer-events: none;
+    /* Desktop: absolute floating */
+    position: absolute;
+    background: #fff;
+    border-radius: 14px;
+    padding: 16px 18px;
+    width: 220px;
+    box-shadow: 0 12px 40px rgba(0,0,0,.25);
+    z-index: 100;
+  }
+  .hspot-popup.visible { display: block; pointer-events: auto; }
+  /* Desktop positions */
+  .hspot-popup.left  { right: calc(100% + 14px); top: 50%; transform: translateY(-50%); }
+  .hspot-popup.right { left: calc(100% + 14px);  top: 50%; transform: translateY(-50%); }
+  .hspot-popup.above { bottom: calc(100% + 14px); left: 50%; transform: translateX(-50%); }
+  .hspot-popup h4 { font-size: 13px; font-weight: 700; color: var(--espresso); margin-bottom: 5px; }
+  .hspot-popup p  { font-size: 12px; color: var(--taupe); line-height: 1.55; }
+
+  /* ── Mobile bottom sheet overlay ── */
+  @media (max-width: 600px) {
+    .hspot-popup {
+      position: fixed !important;
+      left: 12px !important; right: 12px !important;
+      bottom: 90px !important;          /* above sticky CTA */
+      top: auto !important;
+      width: auto !important;
+      max-width: 100% !important;
+      transform: none !important;
+      border-radius: 18px !important;
+      padding: 20px 22px !important;
+      box-shadow: 0 -4px 40px rgba(0,0,0,.22) !important;
+      animation: slideUpSheet .25s ease;
+    }
+    @keyframes slideUpSheet {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    /* close button visible on mobile */
+    .hspot-popup::after {
+      content: '✕';
+      position: absolute;
+      top: 12px; right: 16px;
+      font-size: 14px;
+      color: var(--taupe);
+      cursor: pointer;
+    }
+    .hspot-popup h4 { font-size: 15px; margin-bottom: 7px; }
+    .hspot-popup p  { font-size: 13px; line-height: 1.65; }
+    .hspot-popup-tag { font-size: 11px; padding: 3px 10px; margin-bottom: 8px; }
+  }
+  .hspot-popup-tag {
+    display: inline-block;
+    background: var(--rose-light);
+    color: var(--rose);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-bottom: 6px;
+  }
+  .hotspot-hint {
+    text-align: center;
+    font-size: 12px;
+    color: #6A6058;
+    margin-top: 16px;
+    font-style: italic;
+  }
+
+  /* ─── BEFORE/AFTER SLIDER ─────────────────────────── */
+  .ba-section { background: var(--cream); padding: 60px 24px; }
+  .ba-inner { max-width: 640px; margin: 0 auto; }
+  .ba-cases {
+    margin-top: 32px;
+    position: relative;
+    overflow: hidden;   /* needed for swipe hint arrow */
+  }
+  .ba-case { display: none; }
+  .ba-case.active { display: block; animation: fadeSlide .3s ease; }
+  @keyframes fadeSlide {
+    from { opacity: 0; transform: translateX(18px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+  /* Swipe hint arrows */
+  .ba-swipe-hint {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+    font-size: 12px;
+    color: var(--taupe);
+    font-style: italic;
+  }
+  .ba-swipe-hint span { font-size: 18px; }
+  .ba-slider-wrap {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    user-select: none;
+    touch-action: none;
+    aspect-ratio: 4/3;
+    background: #ddd;
+    cursor: col-resize;
+    box-shadow: 0 8px 40px rgba(40,33,30,.12);
+  }
+  .ba-after, .ba-before {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+  }
+  /* BEFORE = left, shown through clip */
+  .ba-before {
+    z-index: 1;
+    clip-path: inset(0 50% 0 0);
+    transition: clip-path 0s;
+  }
+  .ba-after { z-index: 0; }
+  /* placeholder skin textures */
+  .ba-before-img {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, #c4a08a 0%, #b08060 40%, #9a6a50 70%, #c0957a 100%);
+  }
+  .ba-after-img {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, #f0d8c8 0%, #e8c8b0 40%, #ddb898 70%, #f4dcc8 100%);
+  }
+  /* Custom overlay text on placeholder */
+  .ba-placeholder-text {
+    position: absolute;
+    color: rgba(255,255,255,.9);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    text-shadow: 0 1px 4px rgba(0,0,0,.4);
+    pointer-events: none;
+  }
+  .ba-after .ba-placeholder-text { color: rgba(40,33,30,.5); }
+  /* label badges */
+  .ba-label {
+    position: absolute;
+    top: 14px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 20px;
+    z-index: 5;
+    pointer-events: none;
+  }
+  .ba-label.before-label { left: 14px; background: rgba(40,33,30,.75); color: #fff; }
+  .ba-label.after-label  { right: 14px; background: var(--rose); color: #fff; }
+  /* drag handle */
+  .ba-handle {
+    position: absolute;
+    top: 0; bottom: 0;
+    left: 50%;
+    width: 3px;
+    background: #fff;
+    z-index: 10;
+    transform: translateX(-50%);
+    pointer-events: none;
+  }
+  .ba-handle::before {
+    content: '◀ ▶';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    color: var(--rose);
+    box-shadow: 0 2px 12px rgba(0,0,0,.25);
+    font-weight: 700;
+    letter-spacing: -2px;
+  }
+  /* case info */
+  .ba-info {
+    margin-top: 18px;
+    background: var(--white);
+    border-radius: 14px;
+    padding: 18px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+  .ba-info-text h4 { font-size: 15px; font-weight: 700; color: var(--espresso); margin-bottom: 3px; }
+  .ba-info-text p  { font-size: 13px; color: var(--taupe); }
+  .ba-info-result {
+    background: var(--rose-light);
+    border-radius: 10px;
+    padding: 10px 16px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+  .ba-info-result strong { display: block; font-size: 18px; color: var(--rose); font-family: 'Playfair Display', serif; }
+  .ba-info-result span { font-size: 11px; color: var(--taupe); }
+  /* nav dots */
+  .ba-nav {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 22px;
+  }
+  .ba-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--sand);
+    border: none;
+    cursor: pointer;
+    transition: background .2s, transform .2s;
+  }
+  .ba-dot.active { background: var(--rose); transform: scale(1.3); }
+  .ba-drag-hint {
+    text-align: center;
+    font-size: 12px;
+    color: var(--taupe);
+    margin-top: 12px;
+    font-style: italic;
+  }
+
+  /* ─── ANIMATIONS ──────────────────────────────────── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero h1, .hero-sub, .hero-price, .btn-primary {
+    animation: fadeUp .7s ease both;
+  }
+  .hero-sub  { animation-delay: .15s; }
+  .hero-price { animation-delay: .25s; }
+  .btn-primary { animation-delay: .35s; }
+</style>
+</head>
+<body>
+
+<!-- ═══ URGENCY BAR ═══════════════════════════════════════════ -->
+<div class="urgency-bar">
+  🔥 Offerta valida solo questo mese · Posti limitati · Scade tra: <span id="timer">--:--:--</span>
+</div>
+
+<!-- ═══ HERO ══════════════════════════════════════════════════ -->
+<section class="hero" style="max-width:100%; padding-left:24px; padding-right:24px;">
+  <div class="hero-label">⭕ Promo Esclusiva di Prova</div>
+  <h1>Addio cellulite,<br><em>benvenuta silhouette</em><br>snella e tonica.</h1>
+  <p class="hero-sub">
+    Nonostante diete, esercizi e integratori il corpo "si blocca" sugli stessi inestetismi?
+    C'è una soluzione professionale — e oggi puoi provarla a metà prezzo.
+  </p>
+  <div class="hero-price">
+    <span class="price-old">130€</span>
+    <span class="price-new">49€</span>
+    <span class="price-duration">Seduta completa<br>~70 minuti</span>
+  </div>
+  <a href="#form" class="btn-primary">✨ Voglio la mia Promo a 49€</a>
+  <span class="btn-micro">🔒 Nessun pagamento ora. Ti contatteremo noi.</span>
+</section>
+
+<!-- ═══ TRUST BAR ═════════════════════════════════════════════ -->
+<div class="trust-bar">
+  <span class="trust-item">⭐ <strong>4.9</strong> su Google</span>
+  <span class="trust-item">👩 <strong>200+</strong> clienti soddisfatte</span>
+  <span class="trust-item">📍 Orzinuovi (BS)</span>
+  <span class="trust-item">🏆 Dal <strong>2010</strong></span>
+</div>
+
+<!-- ═══ PROBLEMA ══════════════════════════════════════════════ -->
+<div class="problema">
+  <div class="problema-inner">
+    <span class="section-label">Ti riconosci?</span>
+    <h2>Il corpo che <em>non cambia</em><br>nonostante tutto</h2>
+    <p style="color:var(--taupe); font-size:15px;">
+      Quante volte hai provato senza ottenere i risultati che speravi? Succede quando ci sono meccanismi profondi che dieta e palestra da sole non riescono a sbloccare.
+    </p>
+    <ul class="pain-list">
+      <li>😔 Cellulite e accumuli localizzati che resistono a qualsiasi dieta</li>
+      <li>😣 Pancia gonfia, cuscinetti sulle cosce e glutei che non cambiano</li>
+      <li>💧 Gambe pesanti, gonfiore e ritenzione idrica persistente</li>
+      <li>🪞 Pelle spenta, floscia, che ha perso tono e compattezza</li>
+      <li>🧴 Creme, integratori e trattamenti fai-da-te senza risultati duraturi</li>
+    </ul>
+    <!-- Immagine empatica — problema -->
+    <div style="margin: 28px 0 0; border-radius: 20px; overflow: hidden; position: relative;">
+      <img src="https://images.pexels.com/photos/3985344/pexels-photo-3985344.jpeg?auto=compress&cs=tinysrgb&w=800"
+           alt="Donna che si prende cura delle gambe"
+           loading="lazy"
+           style="width:100%; height:220px; object-fit:cover; display:block; border-radius:20px; filter:brightness(.92) saturate(.9);">
+      <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(40,33,30,.55) 0%, transparent 55%); border-radius:20px;"></div>
+      <p style="position:absolute; bottom:18px; left:20px; right:20px; color:#fff; font-family:'Playfair Display',serif; font-size:16px; font-style:italic; line-height:1.4; text-shadow:0 1px 6px rgba(0,0,0,.5);">
+        "Il problema non sei tu. Sono i meccanismi del microcircolo che vanno riattivati con il metodo giusto."
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ HOTSPOT INTERACTIVE IMAGE ════════════════════════════ -->
+<div class="hotspot-section">
+  <div class="hotspot-inner">
+    <span class="section-label">Capire il problema</span>
+    <h2>Cosa succede <em>davvero</em> sotto la pelle</h2>
+    <p class="hotspot-intro">Tocca i punti <strong style="color:var(--rose);">+</strong> sull'immagine per scoprire cosa causa cellulite, gonfiore e inestetismi.</p>
+
+    <div class="hotspot-wrap" id="hotspot-wrap">
+
+      <!-- SVG body illustration -->
+      <svg class="body-illustration" viewBox="0 0 380 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Background glow -->
+        <ellipse cx="190" cy="380" rx="140" ry="20" fill="rgba(201,168,112,0.12)"/>
+        <!-- Body silhouette - feminine form from waist down -->
+        <defs>
+          <linearGradient id="skinGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#c8967a"/>
+            <stop offset="50%" stop-color="#b87a60"/>
+            <stop offset="100%" stop-color="#c89878"/>
+          </linearGradient>
+          <linearGradient id="shadowGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="rgba(0,0,0,0)"/>
+            <stop offset="100%" stop-color="rgba(0,0,0,0.3)"/>
+          </linearGradient>
+          <!-- Cellulite texture pattern -->
+          <pattern id="cellPattern" x="0" y="0" width="12" height="12" patternUnits="userSpaceOnUse">
+            <circle cx="3" cy="3" r="2" fill="rgba(140,80,60,0.2)"/>
+            <circle cx="9" cy="9" r="1.5" fill="rgba(140,80,60,0.15)"/>
+          </pattern>
+        </defs>
+        <!-- Waist/hips -->
+        <path d="M130 40 C110 45 85 70 80 110 C75 150 78 180 82 220 C86 255 88 290 90 340 C91 360 92 385 95 405 L160 405 C158 385 155 360 153 340 C150 290 148 255 148 220" fill="url(#skinGrad)"/>
+        <path d="M250 40 C270 45 295 70 300 110 C305 150 302 180 298 220 C294 255 292 290 230 340 C229 360 228 385 225 405 L285 405 C288 385 290 360 292 340 C295 290 298 255 298 220" fill="url(#skinGrad)"/>
+        <!-- Center/inner thighs -->
+        <path d="M148 220 C148 230 150 280 153 340 L227 340 C230 280 232 230 232 220 C232 200 228 175 225 165 C210 155 170 155 155 165 C152 175 148 200 148 220Z" fill="url(#skinGrad)"/>
+        <!-- Hips join -->
+        <path d="M130 40 C150 35 190 32 250 40 C270 55 285 90 285 120 C285 150 270 165 250 170 C230 175 200 178 190 178 C180 178 150 175 130 170 C110 165 95 150 95 120 C95 90 110 55 130 40Z" fill="url(#skinGrad)"/>
+        <!-- Cellulite texture overlay -->
+        <path d="M130 40 C150 35 190 32 250 40 C270 55 285 90 285 120 C285 150 270 165 250 170 C230 175 200 178 190 178 C180 178 150 175 130 170 C110 165 95 150 95 120 C95 90 110 55 130 40Z" fill="url(#cellPattern)" opacity="0.6"/>
+        <path d="M80 110 C75 150 78 180 82 220 C86 255 88 290 90 340 L160 340 C148 255 148 220 148 220 C148 200 152 175 155 165 C140 155 110 140 95 120 C88 115 82 112 80 110Z" fill="url(#cellPattern)" opacity="0.4"/>
+        <path d="M300 110 C305 150 302 180 298 220 C294 255 292 290 290 340 L220 340 C230 280 232 230 232 220 C232 200 228 175 225 165 C240 155 270 140 285 120 C292 115 298 112 300 110Z" fill="url(#cellPattern)" opacity="0.4"/>
+        <!-- Shadow overlay -->
+        <path d="M130 40 C150 35 190 32 250 40 C270 55 285 90 285 120 C285 150 270 165 250 170 L130 170 C110 165 95 150 95 120 C95 90 110 55 130 40Z" fill="url(#shadowGrad)" opacity="0.3"/>
+        <!-- Dimple details -->
+        <ellipse cx="150" cy="105" rx="12" ry="8" fill="rgba(100,50,30,0.12)"/>
+        <ellipse cx="230" cy="108" rx="12" ry="8" fill="rgba(100,50,30,0.12)"/>
+        <ellipse cx="110" cy="190" rx="8" ry="5" fill="rgba(100,50,30,0.1)"/>
+        <ellipse cx="270" cy="193" rx="8" ry="5" fill="rgba(100,50,30,0.1)"/>
+        <!-- Feet stubs -->
+        <rect x="90" y="400" width="70" height="12" rx="6" fill="#a07055"/>
+        <rect x="220" y="400" width="70" height="12" rx="6" fill="#a07055"/>
+        <!-- Decorative label -->
+        <text x="190" y="22" text-anchor="middle" font-family="'DM Sans', sans-serif" font-size="11" fill="rgba(255,255,255,0.4)" letter-spacing="2">ZONA CRITICA</text>
+      </svg>
+
+      <!-- HOTSPOT 1 — Cellulite (hips/glutei) -->
+      <button class="hspot" style="top:33%; left:50%;" onclick="toggleHspot(this, 'popup1')" aria-label="Cellulite">+</button>
+      <div class="hspot-popup above" id="popup1">
+        <span class="hspot-popup-tag">Cellulite</span>
+        <h4>Inestetismo a buccia d'arancia</h4>
+        <p>I setti fibrosi sottocutanei si irrigidiscono e intrappolano le cellule adipose, creando le tipiche irregolarità visibili sulla pelle.</p>
+      </div>
+
+      <!-- HOTSPOT 2 — Ritenzione idrica (coscia sx) -->
+      <button class="hspot" style="top:58%; left:28%;" onclick="toggleHspot(this, 'popup2')" aria-label="Ritenzione">+</button>
+      <div class="hspot-popup right" id="popup2">
+        <span class="hspot-popup-tag">Ritenzione Idrica</span>
+        <h4>Gambe gonfie e pesanti</h4>
+        <p>Il ristagno di liquidi nei tessuti causa gonfiore, sensazione di pesantezza e aumenta la visibilità della cellulite.</p>
+      </div>
+
+      <!-- HOTSPOT 3 — Microcircolo (coscia dx) -->
+      <button class="hspot" style="top:55%; left:72%;" onclick="toggleHspot(this, 'popup3')" aria-label="Microcircolo">+</button>
+      <div class="hspot-popup left" id="popup3">
+        <span class="hspot-popup-tag">Microcircolo</span>
+        <h4>Circolazione rallentata</h4>
+        <p>Quando il microcircolo è rallentato, sangue e linfa non scorrono correttamente: la pelle riceve meno ossigeno e si accumula tossine.</p>
+      </div>
+
+      <!-- HOTSPOT 4 — Accumuli localizzati (fianchi) -->
+      <button class="hspot" style="top:24%; left:20%;" onclick="toggleHspot(this, 'popup4')" aria-label="Accumuli">+</button>
+      <div class="hspot-popup right" id="popup4">
+        <span class="hspot-popup-tag">Accumuli Localizzati</span>
+        <h4>Cuscinetti resistenti</h4>
+        <p>In certe zone il grasso è metabolicamente "pigro": dieta ed esercizio non bastano perché il problema è nel metabolismo cutaneo locale.</p>
+      </div>
+
+      <!-- HOTSPOT 5 — Tono pelle (parte alta) -->
+      <button class="hspot" style="top:15%; left:75%;" onclick="toggleHspot(this, 'popup5')" aria-label="Tono pelle">+</button>
+      <div class="hspot-popup left" id="popup5">
+        <span class="hspot-popup-tag">Tono & Compattezza</span>
+        <h4>Pelle floscia e spenta</h4>
+        <p>Il rallentamento del rinnovamento cellulare riduce elastina e collagene: la pelle perde compattezza e appare opaca e cedente.</p>
+      </div>
+
+    </div><!-- /hotspot-wrap -->
+    <p class="hotspot-hint">👆 Tocca i punti + per scoprire ogni problema</p>
+  </div>
+</div>
+
+<!-- ═══ CHI SONO ══════════════════════════════════════════════ -->
+<section class="chi-sono">
+  <span class="section-label">Chi sono</span>
+  <h2>Ciao, sono <em>Loretta</em></h2>
+  <div class="chi-card">
+    <div style="display:flex; align-items:center; gap:18px;">
+      <div class="chi-avatar">L</div>
+      <div>
+        <strong style="font-size:17px; color:var(--espresso);">Loretta</strong><br>
+        <span style="font-size:13px; color:var(--taupe);">Titolare · Centro Estetica Dea, Orzinuovi (BS)</span>
+      </div>
+    </div>
+    <div class="chi-body">
+      <p>
+        Da anni aiuto le donne a <strong>ritrovare il benessere con il proprio corpo</strong> e a sentirsi di nuovo a proprio agio con la propria silhouette.<br><br>
+        Ho selezionato il <strong>Needling Cosmetico Corpo</strong> perché è uno dei trattamenti più innovativi dell'estetica avanzata: agisce in profondità sui meccanismi che le creme e la palestra non riescono a raggiungere.
+      </p>
+      <div class="chi-badges">
+        <span class="badge">✔ Estetica avanzata</span>
+        <span class="badge">✔ Trattamenti corpo</span>
+        <span class="badge">✔ Tecnologie professionali</span>
+        <span class="badge">✔ Orzinuovi dal 2010</span>
+      </div>
+      <div style="margin-top:14px; border-radius:14px; overflow:hidden; height:160px;">
+        <img src="https://images.pexels.com/photos/3997993/pexels-photo-3997993.jpeg?auto=compress&cs=tinysrgb&w=800"
+             alt="Centro estetica professionale Loretta"
+             loading="lazy"
+             style="width:100%; height:100%; object-fit:cover; display:block;">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SOLUZIONE ═════════════════════════════════════════════ -->
+<div class="soluzione">
+  <div class="soluzione-inner">
+    <span class="section-label" style="color:var(--rose-light);">Il trattamento</span>
+    <h2>✨ Needling Cosmetico <em>Corpo</em></h2>
+    <p style="color:#9A8E88; font-size:15px; margin-bottom:28px;">
+      Un trattamento professionale di estetica avanzata che agisce dove gli altri metodi non arrivano.
+    </p>
+    <div class="benefit-grid">
+      <div class="benefit-card">
+        <div class="benefit-icon">💓</div>
+        <h4>Microcircolo</h4>
+        <p>Stimola e riattiva la circolazione cutanea in profondità</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">💧</div>
+        <h4>Drenaggio</h4>
+        <p>Favorisce l'eliminazione dei liquidi in eccesso e del gonfiore</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">🔥</div>
+        <h4>Metabolismo</h4>
+        <p>Riattiva il metabolismo cutaneo e riduce gli accumuli localizzati</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">✨</div>
+        <h4>Tono & Compattezza</h4>
+        <p>Migliora visibilmente qualità, elasticità e compattezza della pelle</p>
+      </div>
+    </div>
+    <div class="zone-tag">
+      📍 Trattamento total body: <strong>cosce · glutei · addome · braccia</strong>
+    </div>
+    <div style="margin-top:28px; border-radius:18px; overflow:hidden; height:200px;">
+      <img src="https://images.pexels.com/photos/4056723/pexels-photo-4056723.jpeg?auto=compress&cs=tinysrgb&w=800"
+           alt="Trattamento corpo needling cosmetico"
+           loading="lazy"
+           style="width:100%; height:100%; object-fit:cover; display:block; opacity:.88; filter:brightness(.9) saturate(.85);">
+    </div>
+  </div>
+</div>
+
+<!-- ═══ OFFERTA ═══════════════════════════════════════════════ -->
+<section class="offerta">
+  <span class="section-label">L'offerta</span>
+  <h2>Cosa ottieni a <em>soli 49€</em></h2>
+  <div class="offer-box">
+    <div class="offer-header">
+      <h3>🎁 Promo Esclusiva di Prova</h3>
+      <p>Needling Cosmetico Corpo — Seduta Completa</p>
+    </div>
+    <div class="offer-body">
+      <div class="offer-price-row">
+        <span class="offer-old">130€</span>
+        <span class="offer-new">49€</span>
+        <span class="offer-save">–62%</span>
+      </div>
+      <ul class="include-list">
+        <li class="include-item">
+          <div class="include-check">✓</div>
+          <div class="include-text">
+            <h4>Consulenza con Beauty Specialist</h4>
+            <p>Analizziamo la qualità della pelle, le zone da trattare e le esigenze del tuo corpo per creare un percorso personalizzato.</p>
+          </div>
+        </li>
+        <li class="include-item">
+          <div class="include-check">✓</div>
+          <div class="include-text">
+            <h4>Esfoliazione Meccanica con Spazzola in Microfibra</h4>
+            <p>Rimuove le cellule morte, lisciando e ammorbidendo la pelle per prepararla ai trattamenti successivi.</p>
+          </div>
+        </li>
+        <li class="include-item">
+          <div class="include-check">✓</div>
+          <div class="include-text">
+            <h4>Massaggio Rimodellante Corpo</h4>
+            <p>Manualità professionale per stimolare la circolazione, favorire il drenaggio e lavorare sugli accumuli localizzati.</p>
+          </div>
+        </li>
+        <li class="include-item">
+          <div class="include-check">✓</div>
+          <div class="include-text">
+            <h4>Trattamento Needling Cosmetico Corpo</h4>
+            <p>Stimola il rinnovamento cutaneo e migliora visibilmente tono, compattezza e qualità della pelle.</p>
+          </div>
+        </li>
+      </ul>
+      <div class="omaggio">
+        🎁 <strong>In omaggio:</strong> Tisana depurativa per favorire drenaggio e benessere del corpo
+      </div>
+      <div class="durata">⏱ Durata della seduta: circa <strong>&nbsp;70 minuti</strong></div>
+      <a href="#form" class="btn-primary" style="display:block; text-align:center;">Prenota il mio posto a 49€ →</a>
+      <span class="btn-micro">⚠️ Offerta valida solo questo mese · Posti limitati</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SOCIAL PROOF ══════════════════════════════════════════ -->
+<div style="background:var(--white); padding:60px 24px;">
+  <div style="max-width:640px; margin:0 auto;">
+    <span class="section-label">Recensioni reali</span>
+    <h2>Cosa dicono le <em>nostre clienti</em></h2>
+    <div style="display:flex; flex-direction:column; gap:18px; margin-top:28px;">
+
+      <div style="background:var(--cream); border-radius:16px; padding:22px; border-left:4px solid var(--rose);">
+        <div style="color:var(--gold); font-size:14px; margin-bottom:8px;">★★★★★</div>
+        <p style="font-size:15px; color:var(--espresso); font-style:italic; margin-bottom:12px;">"Ho provato mille cose senza risultati. Dopo poche sedute ho già visto la differenza sulla pelle delle cosce. Il personale è professionale e mette subito a proprio agio."</p>
+        <strong style="font-size:13px; color:var(--taupe);">Maria G. — Orzinuovi</strong>
+      </div>
+
+      <div style="background:var(--cream); border-radius:16px; padding:22px; border-left:4px solid var(--rose);">
+        <div style="color:var(--gold); font-size:14px; margin-bottom:8px;">★★★★★</div>
+        <p style="font-size:15px; color:var(--espresso); font-style:italic; margin-bottom:12px;">"Loretta è bravissima. Ho fatto il trattamento promo e già dalla prima seduta la pelle era più compatta. Consiglio a tutte!"</p>
+        <strong style="font-size:13px; color:var(--taupe);">Stefania R. — Brescia</strong>
+      </div>
+
+      <div style="background:var(--cream); border-radius:16px; padding:22px; border-left:4px solid var(--rose);">
+        <div style="color:var(--gold); font-size:14px; margin-bottom:8px;">★★★★★</div>
+        <p style="font-size:15px; color:var(--espresso); font-style:italic; margin-bottom:12px;">"Avevo le gambe sempre gonfie e pesanti. Dopo il massaggio rimodellante mi sono sentita leggerissima. Ambiente curato e professionale al 100%."</p>
+        <strong style="font-size:13px; color:var(--taupe);">Cristina M. — Chiari</strong>
+      </div>
+
+    </div>
+    <p style="text-align:center; font-size:13px; color:var(--taupe); margin-top:20px;">⭐ Oltre 4.9/5 su Google Reviews</p>
+  </div>
+</div>
+
+<!-- ═══ PRIMA & DOPO ════════════════════════════════════════════ -->
+<div class="ba-section">
+  <div class="ba-inner">
+    <span class="section-label">Risultati reali</span>
+    <h2>Prima &amp; Dopo — <em>4 casi</em> reali</h2>
+    <p style="color:var(--taupe); font-size:15px; margin-bottom:24px;">Foto reali delle nostre clienti (pubblicate con consenso).</p>
+
+    <!-- Carousel scorrevole -->
+    <div id="ba-carousel" style="display:flex; gap:14px; overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; padding-bottom:12px; scrollbar-width:none;">
+      <style>#ba-carousel::-webkit-scrollbar{display:none}</style>
+
+      <!-- IMG 1 — sostituisci il div con <img src="foto-1.jpg" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:18px;"> -->
+      <div style="flex:0 0 82%; scroll-snap-align:start; border-radius:18px; overflow:hidden; box-shadow:0 4px 20px rgba(40,33,30,.12); aspect-ratio:4/3; background:linear-gradient(135deg,#c4a08a,#9a6a50); display:flex; align-items:center; justify-content:center;">
+        <span style="color:rgba(255,255,255,.55); font-size:12px; font-weight:600; letter-spacing:.05em; text-align:center; padding:20px;">[ Foto 1 ]</span>
+      </div>
+
+      <!-- IMG 2 -->
+      <div style="flex:0 0 82%; scroll-snap-align:start; border-radius:18px; overflow:hidden; box-shadow:0 4px 20px rgba(40,33,30,.12); aspect-ratio:4/3; background:linear-gradient(135deg,#b89070,#8a5a40); display:flex; align-items:center; justify-content:center;">
+        <span style="color:rgba(255,255,255,.55); font-size:12px; font-weight:600; letter-spacing:.05em; text-align:center; padding:20px;">[ Foto 2 ]</span>
+      </div>
+
+      <!-- IMG 3 -->
+      <div style="flex:0 0 82%; scroll-snap-align:start; border-radius:18px; overflow:hidden; box-shadow:0 4px 20px rgba(40,33,30,.12); aspect-ratio:4/3; background:linear-gradient(135deg,#c09878,#905840); display:flex; align-items:center; justify-content:center;">
+        <span style="color:rgba(255,255,255,.55); font-size:12px; font-weight:600; letter-spacing:.05em; text-align:center; padding:20px;">[ Foto 3 ]</span>
+      </div>
+
+      <!-- IMG 4 -->
+      <div style="flex:0 0 82%; scroll-snap-align:start; border-radius:18px; overflow:hidden; box-shadow:0 4px 20px rgba(40,33,30,.12); aspect-ratio:4/3; background:linear-gradient(135deg,#a88060,#785030); display:flex; align-items:center; justify-content:center;">
+        <span style="color:rgba(255,255,255,.55); font-size:12px; font-weight:600; letter-spacing:.05em; text-align:center; padding:20px;">[ Foto 4 ]</span>
+      </div>
+    </div>
+
+    <!-- Pallini indicatori -->
+    <div id="ba-dots" style="display:flex; justify-content:center; gap:8px; margin-top:14px;">
+      <span class="ba-cdot" style="width:8px;height:8px;border-radius:50%;background:var(--rose);display:inline-block;transition:opacity .2s;"></span>
+      <span class="ba-cdot" style="width:8px;height:8px;border-radius:50%;background:var(--rose);opacity:.3;display:inline-block;transition:opacity .2s;"></span>
+      <span class="ba-cdot" style="width:8px;height:8px;border-radius:50%;background:var(--rose);opacity:.3;display:inline-block;transition:opacity .2s;"></span>
+      <span class="ba-cdot" style="width:8px;height:8px;border-radius:50%;background:var(--rose);opacity:.3;display:inline-block;transition:opacity .2s;"></span>
+    </div>
+    <p style="text-align:center; font-size:12px; color:var(--taupe); margin-top:8px; font-style:italic;">← Scorri per vedere tutti i casi →</p>
+  </div>
+</div>
+
+<!-- ═══ FAQ ═══════════════════════════════════════════════════ -->
+<section class="faq">
+  <span class="section-label">Hai dubbi?</span>
+  <h2>Domande <em>frequenti</em></h2>
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-question">Il trattamento fa male? <span class="faq-icon">+</span></button>
+      <div class="faq-answer"><p>No, il Needling Cosmetico Corpo è un trattamento delicato e non invasivo. La sensazione è simile a un massaggio profondo, piacevole e rilassante. Molte clienti si addormentano durante la seduta!</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">Per che tipo di pelle è indicato? <span class="faq-icon">+</span></button>
+      <div class="faq-answer"><p>È adatto a tutti i tipi di pelle. Durante la consulenza iniziale (inclusa nella promo) valutiamo le caratteristiche della tua pelle e personalizziamo il trattamento sulle tue esigenze specifiche.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">Cosa succede dopo che lascio i miei dati? <span class="faq-icon">+</span></button>
+      <div class="faq-answer"><p>Una nostra beauty specialist ti contatterà entro 24 ore per fissare l'appuntamento nella data e nell'orario più comodi per te. Non c'è nessun impegno e nessun pagamento anticipato.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">Quante sedute sono necessarie? <span class="faq-icon">+</span></button>
+      <div class="faq-answer"><p>La promo a 49€ è una seduta di prova per scoprire il trattamento. Durante la consulenza ti proporremo il percorso ideale per i tuoi obiettivi — senza nessun obbligo.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">Posso disdire o spostare l'appuntamento? <span class="faq-icon">+</span></button>
+      <div class="faq-answer"><p>Sì, senza problemi. Basta avvisarci con 24 ore di anticipo e troviamo insieme una nuova data. La tua tranquillità è la nostra priorità.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FORM ═══════════════════════════════════════════════════ -->
+<div class="form-section" id="form">
+  <div class="form-inner">
+    <span class="section-label" style="color:var(--rose-light);">Richiedi la promo</span>
+    <h2>Prenota il tuo posto<br>a soli 49€</h2>
+    <p class="form-sub">Compila il form e scopri se il Needling Cosmetico Corpo è il trattamento giusto per te. Ti richiamiamo noi entro 24 ore.</p>
+    <div class="form-box">
+      <div id="form-content">
+        <div class="form-group">
+          <label for="nome">Nome e cognome</label>
+          <input type="text" id="nome" placeholder="Es. Giulia Rossi" autocomplete="name">
+        </div>
+        <div class="form-group">
+          <label for="email">Indirizzo email</label>
+          <input type="email" id="email" placeholder="Es. giulia@email.it" autocomplete="email">
+        </div>
+        <div class="form-group">
+          <label for="telefono">Numero di telefono</label>
+          <input type="tel" id="telefono" placeholder="+39 333 123 4567" autocomplete="tel">
+        </div>
+        <a href="javascript:void(0)" class="btn-primary" onclick="submitForm()" style="display:block; text-align:center; margin-top:8px;">
+          ✨ Sì, voglio la mia Promo a 49€!
+        </a>
+        <p class="privacy-note">
+          🔒 I tuoi dati sono al sicuro e non verranno condivisi con terzi. Inviando il modulo accetti la nostra <a href="#">Privacy Policy</a>. Nessuno spam, solo una chiamata dal nostro centro.
+        </p>
+      </div>
+      <div class="form-success" id="form-success">
+        <div class="success-icon">🌸</div>
+        <h3>Perfetto! Ci sentiamo presto.</h3>
+        <p>Abbiamo ricevuto la tua richiesta. Una nostra beauty specialist ti chiamerà entro 24 ore per fissare il tuo appuntamento.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ FINAL CTA ══════════════════════════════════════════════ -->
+<div class="final-cta">
+  <h2>L'offerta scade a fine mese 🌸</h2>
+  <p>Solo per chi prenota ora: Needling Cosmetico Corpo completo (70 min) a soli 49€ invece di 130€.</p>
+  <a href="#form" class="btn-primary" style="background:var(--champagne); color:var(--espresso); border:1px solid var(--sand);">Voglio approfittarne →</a>
+</div>
+
+<!-- ═══ FOOTER ════════════════════════════════════════════════ -->
+<footer>
+  <strong>Centro Estetica Dea</strong> · Via Risorgimento, 3/A · Orzinuovi (BS)<br>
+  Tel. <a href="tel:+390309942004" style="color:inherit;">030 994 2004</a> &nbsp;·&nbsp; WhatsApp <a href="https://wa.me/393342330893" target="_blank" rel="noopener" style="color:inherit;">334 233 0893</a><br>
+  P.IVA 03638850986
+</footer>
+
+<!-- ═══ WHATSAPP FAB ════════════════════════════════════════════ -->
+<!-- ⚠️ Sostituisci 391234567890 con il numero reale del centro (prefisso internazionale, senza +) -->
+<a class="wa-fab" href="https://wa.me/393342330893?text=Ciao!%20Vorrei%20informazioni%20sulla%20promo%20Needling%20Cosmetico%20a%2049%E2%82%AC%20%F0%9F%8C%B8" target="_blank" rel="noopener" aria-label="Scrivici su WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.555 4.117 1.528 5.845L.057 23.428a.5.5 0 0 0 .515.572l5.758-1.51A11.943 11.943 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-4.964-1.349l-.355-.211-3.688.968.985-3.6-.232-.37A9.818 9.818 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/>
+  </svg>
+  <span class="wa-label">Scrivici su WhatsApp</span>
+</a>
+
+<!-- ═══ STICKY MOBILE CTA ══════════════════════════════════════ -->
+<div class="sticky-cta">
+  <a href="#form">✨ Prenota a 49€ — Solo questo mese</a>
+</div>
+
+<script>
+  // ── CAROUSEL DOTS ───────────────────────────────────────────
+  (function() {
+    const carousel = document.getElementById('ba-carousel');
+    const dots = document.querySelectorAll('.ba-cdot');
+    if (!carousel || !dots.length) return;
+    carousel.addEventListener('scroll', () => {
+      const idx = Math.round(carousel.scrollLeft / carousel.offsetWidth);
+      dots.forEach((d, i) => d.style.opacity = i === idx ? '1' : '.3');
+    }, { passive: true });
+  })();
+
+  // ── HOTSPOT popups ──────────────────────────────────────────
+  function toggleHspot(btn, popupId) {
+    const popup = document.getElementById(popupId);
+    const isOpen = popup.classList.contains('visible');
+    // close all
+    document.querySelectorAll('.hspot-popup').forEach(p => p.classList.remove('visible'));
+    document.querySelectorAll('.hspot').forEach(b => b.classList.remove('active'));
+    if (!isOpen) {
+      popup.classList.add('visible');
+      btn.classList.add('active');
+      btn.textContent = '×';
+    } else {
+      btn.textContent = '+';
+    }
+  }
+  // close popups on outside click
+  document.addEventListener('click', e => {
+    if (!e.target.classList.contains('hspot') && !e.target.closest('.hspot-popup')) {
+      document.querySelectorAll('.hspot-popup').forEach(p => p.classList.remove('visible'));
+      document.querySelectorAll('.hspot').forEach(b => { b.classList.remove('active'); b.textContent = '+'; });
+    }
+  });
+
+  // ── BEFORE / AFTER SLIDERS ──────────────────────────────────
+  let currentCase = 1;
+  const TOTAL_CASES = 3;
+
+  function switchCase(n) {
+    currentCase = Math.max(1, Math.min(TOTAL_CASES, n));
+    document.querySelectorAll('.ba-case').forEach(c => c.classList.remove('active'));
+    document.querySelectorAll('.ba-dot').forEach(d => d.classList.remove('active'));
+    document.getElementById('case-' + currentCase).classList.add('active');
+    document.querySelectorAll('.ba-dot')[currentCase - 1].classList.add('active');
+  }
+
+  // Swipe left/right on the cases container to change case
+  (function() {
+    const container = document.querySelector('.ba-cases');
+    if (!container) return;
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let sliderDragging = false;
+
+    container.addEventListener('touchstart', e => {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+      sliderDragging = false;
+    }, { passive: true });
+
+    container.addEventListener('touchmove', e => {
+      // If touch started on the slider handle area, it's a slider drag not a swipe
+      const dx = Math.abs(e.touches[0].clientX - touchStartX);
+      const dy = Math.abs(e.touches[0].clientY - touchStartY);
+      if (dy > dx) sliderDragging = true; // vertical scroll wins
+    }, { passive: true });
+
+    container.addEventListener('touchend', e => {
+      if (sliderDragging) return;
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      const dy = Math.abs(e.changedTouches[0].clientY - touchStartY);
+      // Only trigger case switch if horizontal swipe > 50px and not too vertical
+      if (Math.abs(dx) > 50 && dy < 80) {
+        if (dx < 0) switchCase(currentCase + 1); // swipe left → next
+        else        switchCase(currentCase - 1); // swipe right → prev
+      }
+    }, { passive: true });
+  })();
+
+  function initSlider(id) {
+    const wrap   = document.getElementById('slider-' + id);
+    if (!wrap) return;
+    const before = wrap.querySelector('.ba-before');
+    const handle = wrap.querySelector('.ba-handle');
+    let dragging  = false;
+    let touchSliding = false;
+
+    function setPos(x) {
+      const rect = wrap.getBoundingClientRect();
+      let pct = Math.min(Math.max((x - rect.left) / rect.width, 0.02), 0.98);
+      before.style.clipPath = `inset(0 ${(1 - pct) * 100}% 0 0)`;
+      handle.style.left = (pct * 100) + '%';
+    }
+
+    // Mouse
+    wrap.addEventListener('mousedown', e => { dragging = true; setPos(e.clientX); e.preventDefault(); });
+    window.addEventListener('mousemove', e => { if (dragging) setPos(e.clientX); });
+    window.addEventListener('mouseup',   () => { dragging = false; });
+
+    // Touch — only activate if horizontal movement detected (not a case-swipe)
+    let txStart = 0, tyStart = 0;
+    wrap.addEventListener('touchstart', e => {
+      txStart = e.touches[0].clientX;
+      tyStart = e.touches[0].clientY;
+      touchSliding = false;
+    }, { passive: true });
+
+    wrap.addEventListener('touchmove', e => {
+      const dx = Math.abs(e.touches[0].clientX - txStart);
+      const dy = Math.abs(e.touches[0].clientY - tyStart);
+      if (!touchSliding && dx > 8) { touchSliding = true; dragging = true; }
+      if (dragging && touchSliding) setPos(e.touches[0].clientX);
+    }, { passive: true });
+
+    window.addEventListener('touchend', () => { dragging = false; touchSliding = false; });
+  }
+
+  initSlider(1);
+  initSlider(2);
+  initSlider(3);
+
+
+  function updateTimer() {
+    const now = new Date();
+    // Fine del mese corrente — si azzera automaticamente all'1 di ogni mese
+    const endOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 1, 0, 0, 0);
+    const diff = endOfMonth - now;
+    if (diff <= 0) { updateTimer(); return; } // mese appena cambiato: ricalcola subito
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    const el = document.getElementById('timer');
+    if (el) el.textContent =
+      String(d).padStart(2,'0') + 'g ' +
+      String(h).padStart(2,'0') + 'h ' +
+      String(m).padStart(2,'0') + 'm ' +
+      String(s).padStart(2,'0') + 's';
+  }
+  updateTimer();
+  setInterval(updateTimer, 1000);
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // Form submit → Brevo
+  async function submitForm() {
+    const nome  = document.getElementById('nome').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const tel   = document.getElementById('telefono').value.trim();
+    if (!nome || !email || !tel) { alert('Per favore compila tutti i campi obbligatori.'); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { alert('Inserisci un indirizzo email valido.'); return; }
+
+    const btn = document.querySelector('#form-content .btn-primary');
+    btn.textContent = 'Invio in corso…';
+    btn.style.opacity = '.7';
+    btn.style.pointerEvents = 'none';
+
+    // ── Brevo API ─────────────────────────────────────────────
+    // Sostituisci BREVO_API_KEY con la tua chiave (vedi istruzioni sotto)
+    // Sostituisci 2 con l'ID della lista Brevo a cui vuoi aggiungere il contatto
+    const BREVO_API_KEY = 'INSERISCI_QUI_LA_TUA_API_KEY';
+    const LISTA_ID      = 4; // ID lista Brevo — modifica se necessario
+
+    const [firstName, ...rest] = nome.split(' ');
+    const lastName = rest.join(' ') || '';
+
+    try {
+      const res = await fetch('https://api.brevo.com/v3/contacts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'api-key': BREVO_API_KEY
+        },
+        body: JSON.stringify({
+          email,
+          attributes: {
+            FIRSTNAME: firstName,
+            LASTNAME:  lastName,
+            SMS:       tel
+          },
+          listIds: [LISTA_ID],
+          updateEnabled: true  // aggiorna il contatto se esiste già
+        })
+      });
+
+      if (res.ok || res.status === 204) {
+        document.getElementById('form-content').style.display = 'none';
+        document.getElementById('form-success').style.display = 'block';
+      } else {
+        const err = await res.json();
+        console.error('Brevo error:', err);
+        alert('Si è verificato un errore. Riprova o contattaci su WhatsApp.');
+        btn.textContent = '✨ Sì, voglio la mia Promo a 49€!';
+        btn.style.opacity = '1';
+        btn.style.pointerEvents = 'auto';
+      }
+    } catch (e) {
+      console.error(e);
+      alert('Connessione non riuscita. Riprova più tardi.');
+      btn.textContent = '✨ Sì, voglio la mia Promo a 49€!';
+      btn.style.opacity = '1';
+      btn.style.pointerEvents = 'auto';
+    }
+  }
+</script>
+</body>
+</html>
