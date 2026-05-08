@@ -679,15 +679,7 @@
       from { opacity: 0; transform: translateY(20px); }
       to   { opacity: 1; transform: translateY(0); }
     }
-    /* close button visible on mobile */
-    .hspot-popup::after {
-      content: '✕';
-      position: absolute;
-      top: 12px; right: 16px;
-      font-size: 14px;
-      color: var(--taupe);
-      cursor: pointer;
-    }
+
     .hspot-popup h4 { font-size: 15px; margin-bottom: 7px; }
     .hspot-popup p  { font-size: 13px; line-height: 1.65; }
     .hspot-popup-tag { font-size: 11px; padding: 3px 10px; margin-bottom: 8px; }
@@ -938,7 +930,7 @@
     </ul>
     <!-- Immagine empatica — problema -->
     <div style="margin: 28px 0 0; border-radius: 20px; overflow: hidden; position: relative;">
-      <img src="https://images.pexels.com/photos/3985344/pexels-photo-3985344.jpeg?auto=compress&cs=tinysrgb&w=800"
+      <img src="https://raw.githubusercontent.com/lucarongaroli/landing-estetica-dea/main/img/Estetica-Dea_problema.webp"
            alt="Donna che si prende cura delle gambe"
            loading="lazy"
            style="width:100%; height:220px; object-fit:cover; display:block; border-radius:20px; filter:brightness(.92) saturate(.9);">
@@ -959,55 +951,11 @@
 
     <div class="hotspot-wrap" id="hotspot-wrap">
 
-      <!-- SVG body illustration -->
-      <svg class="body-illustration" viewBox="0 0 380 420" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- Background glow -->
-        <ellipse cx="190" cy="380" rx="140" ry="20" fill="rgba(201,168,112,0.12)"/>
-        <!-- Body silhouette - feminine form from waist down -->
-        <defs>
-          <linearGradient id="skinGrad" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#c8967a"/>
-            <stop offset="50%" stop-color="#b87a60"/>
-            <stop offset="100%" stop-color="#c89878"/>
-          </linearGradient>
-          <linearGradient id="shadowGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="rgba(0,0,0,0)"/>
-            <stop offset="100%" stop-color="rgba(0,0,0,0.3)"/>
-          </linearGradient>
-          <!-- Cellulite texture pattern -->
-          <pattern id="cellPattern" x="0" y="0" width="12" height="12" patternUnits="userSpaceOnUse">
-            <circle cx="3" cy="3" r="2" fill="rgba(140,80,60,0.2)"/>
-            <circle cx="9" cy="9" r="1.5" fill="rgba(140,80,60,0.15)"/>
-          </pattern>
-        </defs>
-        <!-- Waist/hips -->
-        <path d="M130 40 C110 45 85 70 80 110 C75 150 78 180 82 220 C86 255 88 290 90 340 C91 360 92 385 95 405 L160 405 C158 385 155 360 153 340 C150 290 148 255 148 220" fill="url(#skinGrad)"/>
-        <path d="M250 40 C270 45 295 70 300 110 C305 150 302 180 298 220 C294 255 292 290 230 340 C229 360 228 385 225 405 L285 405 C288 385 290 360 292 340 C295 290 298 255 298 220" fill="url(#skinGrad)"/>
-        <!-- Center/inner thighs -->
-        <path d="M148 220 C148 230 150 280 153 340 L227 340 C230 280 232 230 232 220 C232 200 228 175 225 165 C210 155 170 155 155 165 C152 175 148 200 148 220Z" fill="url(#skinGrad)"/>
-        <!-- Hips join -->
-        <path d="M130 40 C150 35 190 32 250 40 C270 55 285 90 285 120 C285 150 270 165 250 170 C230 175 200 178 190 178 C180 178 150 175 130 170 C110 165 95 150 95 120 C95 90 110 55 130 40Z" fill="url(#skinGrad)"/>
-        <!-- Cellulite texture overlay -->
-        <path d="M130 40 C150 35 190 32 250 40 C270 55 285 90 285 120 C285 150 270 165 250 170 C230 175 200 178 190 178 C180 178 150 175 130 170 C110 165 95 150 95 120 C95 90 110 55 130 40Z" fill="url(#cellPattern)" opacity="0.6"/>
-        <path d="M80 110 C75 150 78 180 82 220 C86 255 88 290 90 340 L160 340 C148 255 148 220 148 220 C148 200 152 175 155 165 C140 155 110 140 95 120 C88 115 82 112 80 110Z" fill="url(#cellPattern)" opacity="0.4"/>
-        <path d="M300 110 C305 150 302 180 298 220 C294 255 292 290 290 340 L220 340 C230 280 232 230 232 220 C232 200 228 175 225 165 C240 155 270 140 285 120 C292 115 298 112 300 110Z" fill="url(#cellPattern)" opacity="0.4"/>
-        <!-- Shadow overlay -->
-        <path d="M130 40 C150 35 190 32 250 40 C270 55 285 90 285 120 C285 150 270 165 250 170 L130 170 C110 165 95 150 95 120 C95 90 110 55 130 40Z" fill="url(#shadowGrad)" opacity="0.3"/>
-        <!-- Dimple details -->
-        <ellipse cx="150" cy="105" rx="12" ry="8" fill="rgba(100,50,30,0.12)"/>
-        <ellipse cx="230" cy="108" rx="12" ry="8" fill="rgba(100,50,30,0.12)"/>
-        <ellipse cx="110" cy="190" rx="8" ry="5" fill="rgba(100,50,30,0.1)"/>
-        <ellipse cx="270" cy="193" rx="8" ry="5" fill="rgba(100,50,30,0.1)"/>
-        <!-- Feet stubs -->
-        <rect x="90" y="400" width="70" height="12" rx="6" fill="#a07055"/>
-        <rect x="220" y="400" width="70" height="12" rx="6" fill="#a07055"/>
-        <!-- Decorative label -->
-        <text x="190" y="22" text-anchor="middle" font-family="'DM Sans', sans-serif" font-size="11" fill="rgba(255,255,255,0.4)" letter-spacing="2">ZONA CRITICA</text>
-      </svg>
+      <img src="https://raw.githubusercontent.com/lucarongaroli/landing-estetica-dea/main/img/Estetica-Dea_hotspot.webp" alt="Illustrazione corpo" style="display:block;width:100%;height:auto;border-radius:18px;">
 
       <!-- HOTSPOT 1 — Cellulite (hips/glutei) -->
       <button class="hspot" style="top:33%; left:50%;" onclick="toggleHspot(this, 'popup1')" aria-label="Cellulite">+</button>
-      <div class="hspot-popup above" id="popup1">
+      <div class="hspot-popup above" id="popup1"><button onclick="closeAllHspots()" style="position:absolute;top:10px;right:12px;background:none;border:none;font-size:16px;color:#888;cursor:pointer;line-height:1;padding:2px 4px;" aria-label="Chiudi">✕</button>
         <span class="hspot-popup-tag">Cellulite</span>
         <h4>Inestetismo a buccia d'arancia</h4>
         <p>I setti fibrosi sottocutanei si irrigidiscono e intrappolano le cellule adipose, creando le tipiche irregolarità visibili sulla pelle.</p>
@@ -1015,7 +963,7 @@
 
       <!-- HOTSPOT 2 — Ritenzione idrica (coscia sx) -->
       <button class="hspot" style="top:58%; left:28%;" onclick="toggleHspot(this, 'popup2')" aria-label="Ritenzione">+</button>
-      <div class="hspot-popup right" id="popup2">
+      <div class="hspot-popup right" id="popup2"><button onclick="closeAllHspots()" style="position:absolute;top:10px;right:12px;background:none;border:none;font-size:16px;color:#888;cursor:pointer;line-height:1;padding:2px 4px;" aria-label="Chiudi">✕</button>
         <span class="hspot-popup-tag">Ritenzione Idrica</span>
         <h4>Gambe gonfie e pesanti</h4>
         <p>Il ristagno di liquidi nei tessuti causa gonfiore, sensazione di pesantezza e aumenta la visibilità della cellulite.</p>
@@ -1023,7 +971,7 @@
 
       <!-- HOTSPOT 3 — Microcircolo (coscia dx) -->
       <button class="hspot" style="top:55%; left:72%;" onclick="toggleHspot(this, 'popup3')" aria-label="Microcircolo">+</button>
-      <div class="hspot-popup left" id="popup3">
+      <div class="hspot-popup left" id="popup3"><button onclick="closeAllHspots()" style="position:absolute;top:10px;right:12px;background:none;border:none;font-size:16px;color:#888;cursor:pointer;line-height:1;padding:2px 4px;" aria-label="Chiudi">✕</button>
         <span class="hspot-popup-tag">Microcircolo</span>
         <h4>Circolazione rallentata</h4>
         <p>Quando il microcircolo è rallentato, sangue e linfa non scorrono correttamente: la pelle riceve meno ossigeno e si accumula tossine.</p>
@@ -1031,7 +979,7 @@
 
       <!-- HOTSPOT 4 — Accumuli localizzati (fianchi) -->
       <button class="hspot" style="top:24%; left:20%;" onclick="toggleHspot(this, 'popup4')" aria-label="Accumuli">+</button>
-      <div class="hspot-popup right" id="popup4">
+      <div class="hspot-popup right" id="popup4"><button onclick="closeAllHspots()" style="position:absolute;top:10px;right:12px;background:none;border:none;font-size:16px;color:#888;cursor:pointer;line-height:1;padding:2px 4px;" aria-label="Chiudi">✕</button>
         <span class="hspot-popup-tag">Accumuli Localizzati</span>
         <h4>Cuscinetti resistenti</h4>
         <p>In certe zone il grasso è metabolicamente "pigro": dieta ed esercizio non bastano perché il problema è nel metabolismo cutaneo locale.</p>
@@ -1039,7 +987,7 @@
 
       <!-- HOTSPOT 5 — Tono pelle (parte alta) -->
       <button class="hspot" style="top:15%; left:75%;" onclick="toggleHspot(this, 'popup5')" aria-label="Tono pelle">+</button>
-      <div class="hspot-popup left" id="popup5">
+      <div class="hspot-popup left" id="popup5"><button onclick="closeAllHspots()" style="position:absolute;top:10px;right:12px;background:none;border:none;font-size:16px;color:#888;cursor:pointer;line-height:1;padding:2px 4px;" aria-label="Chiudi">✕</button>
         <span class="hspot-popup-tag">Tono & Compattezza</span>
         <h4>Pelle floscia e spenta</h4>
         <p>Il rallentamento del rinnovamento cellulare riduce elastina e collagene: la pelle perde compattezza e appare opaca e cedente.</p>
@@ -1056,7 +1004,7 @@
   <h2>Ciao, sono <em>Loretta</em></h2>
   <div class="chi-card">
     <div style="display:flex; align-items:center; gap:18px;">
-      <div class="chi-avatar">L</div>
+      <div class="chi-avatar" style="background:none;padding:0;overflow:hidden;"><img src="https://raw.githubusercontent.com/lucarongaroli/landing-estetica-dea/main/img/Estetica-Dea_Loretta.webp" alt="Loretta" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:50%;"></div>
       <div>
         <strong style="font-size:17px; color:var(--espresso);">Loretta</strong><br>
         <span style="font-size:13px; color:var(--taupe);">Titolare · Centro Estetica Dea, Orzinuovi (BS)</span>
@@ -1074,7 +1022,7 @@
         <span class="badge">✔ Orzinuovi dal 2010</span>
       </div>
       <div style="margin-top:14px; border-radius:14px; overflow:hidden; height:160px;">
-        <img src="https://images.pexels.com/photos/3997993/pexels-photo-3997993.jpeg?auto=compress&cs=tinysrgb&w=800"
+        <img src="https://raw.githubusercontent.com/lucarongaroli/landing-estetica-dea/main/img/Estetica-Dea_chi-sono.webp"
              alt="Centro estetica professionale Loretta"
              loading="lazy"
              style="width:100%; height:100%; object-fit:cover; display:block;">
@@ -1116,11 +1064,11 @@
     <div class="zone-tag">
       📍 Trattamento total body: <strong>cosce · glutei · addome · braccia</strong>
     </div>
-    <div style="margin-top:28px; border-radius:18px; overflow:hidden; height:200px;">
-      <img src="https://images.pexels.com/photos/4056723/pexels-photo-4056723.jpeg?auto=compress&cs=tinysrgb&w=800"
+    <div style="margin-top:28px; border-radius:18px; overflow:hidden;">
+      <img src="https://raw.githubusercontent.com/lucarongaroli/landing-estetica-dea/main/img/Estetica-Dea_soluzione.webp"
            alt="Trattamento corpo needling cosmetico"
            loading="lazy"
-           style="width:100%; height:100%; object-fit:cover; display:block; opacity:.88; filter:brightness(.9) saturate(.85);">
+           style="width:100%; height:auto; display:block; opacity:.88; filter:brightness(.9) saturate(.85);">
     </div>
   </div>
 </div>
@@ -1218,29 +1166,37 @@
     <p style="color:var(--taupe); font-size:15px; margin-bottom:24px;">Foto reali delle nostre clienti (pubblicate con consenso).</p>
 
     <!-- Carousel scorrevole -->
+    <div style="position:relative;">
+      <!-- Freccia sinistra -->
+      <button id="ba-prev" onclick="baScroll(-1)" aria-label="Precedente" style="
+        position:absolute; left:-18px; top:50%; transform:translateY(-50%);
+        z-index:10; background:#fff; border:none; border-radius:50%;
+        width:40px; height:40px; box-shadow:0 2px 12px rgba(40,33,30,.18);
+        font-size:18px; cursor:pointer; display:flex; align-items:center; justify-content:center;
+        color:var(--espresso); transition:opacity .2s;">‹</button>
+      <!-- Freccia destra -->
+      <button id="ba-next" onclick="baScroll(1)" aria-label="Successivo" style="
+        position:absolute; right:-18px; top:50%; transform:translateY(-50%);
+        z-index:10; background:#fff; border:none; border-radius:50%;
+        width:40px; height:40px; box-shadow:0 2px 12px rgba(40,33,30,.18);
+        font-size:18px; cursor:pointer; display:flex; align-items:center; justify-content:center;
+        color:var(--espresso); transition:opacity .2s;">›</button>
     <div id="ba-carousel" style="display:flex; gap:14px; overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; padding-bottom:12px; scrollbar-width:none;">
       <style>#ba-carousel::-webkit-scrollbar{display:none}</style>
 
       <!-- IMG 1 — sostituisci il div con <img src="foto-1.jpg" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:18px;"> -->
-      <div style="flex:0 0 82%; scroll-snap-align:start; border-radius:18px; overflow:hidden; box-shadow:0 4px 20px rgba(40,33,30,.12); aspect-ratio:4/3; background:linear-gradient(135deg,#c4a08a,#9a6a50); display:flex; align-items:center; justify-content:center;">
-        <span style="color:rgba(255,255,255,.55); font-size:12px; font-weight:600; letter-spacing:.05em; text-align:center; padding:20px;">[ Foto 1 ]</span>
-      </div>
+      <div style="flex:0 0 82%; scroll-snap-align:start; border-radius:18px; overflow:hidden; box-shadow:0 4px 20px rgba(40,33,30,.12); aspect-ratio:4/3;"><img src="https://raw.githubusercontent.com/lucarongaroli/landing-estetica-dea/main/img/Estetica-Dea_caso1.webp" alt="Prima e dopo caso 1" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
 
       <!-- IMG 2 -->
-      <div style="flex:0 0 82%; scroll-snap-align:start; border-radius:18px; overflow:hidden; box-shadow:0 4px 20px rgba(40,33,30,.12); aspect-ratio:4/3; background:linear-gradient(135deg,#b89070,#8a5a40); display:flex; align-items:center; justify-content:center;">
-        <span style="color:rgba(255,255,255,.55); font-size:12px; font-weight:600; letter-spacing:.05em; text-align:center; padding:20px;">[ Foto 2 ]</span>
-      </div>
+      <div style="flex:0 0 82%; scroll-snap-align:start; border-radius:18px; overflow:hidden; box-shadow:0 4px 20px rgba(40,33,30,.12); aspect-ratio:4/3;"><img src="https://raw.githubusercontent.com/lucarongaroli/landing-estetica-dea/main/img/Estetica-Dea_caso2.webp" alt="Prima e dopo caso 2" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
 
       <!-- IMG 3 -->
-      <div style="flex:0 0 82%; scroll-snap-align:start; border-radius:18px; overflow:hidden; box-shadow:0 4px 20px rgba(40,33,30,.12); aspect-ratio:4/3; background:linear-gradient(135deg,#c09878,#905840); display:flex; align-items:center; justify-content:center;">
-        <span style="color:rgba(255,255,255,.55); font-size:12px; font-weight:600; letter-spacing:.05em; text-align:center; padding:20px;">[ Foto 3 ]</span>
-      </div>
+      <div style="flex:0 0 82%; scroll-snap-align:start; border-radius:18px; overflow:hidden; box-shadow:0 4px 20px rgba(40,33,30,.12); aspect-ratio:4/3;"><img src="https://raw.githubusercontent.com/lucarongaroli/landing-estetica-dea/main/img/Estetica-Dea_caso3.webp" alt="Prima e dopo caso 3" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
 
       <!-- IMG 4 -->
-      <div style="flex:0 0 82%; scroll-snap-align:start; border-radius:18px; overflow:hidden; box-shadow:0 4px 20px rgba(40,33,30,.12); aspect-ratio:4/3; background:linear-gradient(135deg,#a88060,#785030); display:flex; align-items:center; justify-content:center;">
-        <span style="color:rgba(255,255,255,.55); font-size:12px; font-weight:600; letter-spacing:.05em; text-align:center; padding:20px;">[ Foto 4 ]</span>
-      </div>
+      <div style="flex:0 0 82%; scroll-snap-align:start; border-radius:18px; overflow:hidden; box-shadow:0 4px 20px rgba(40,33,30,.12); aspect-ratio:4/3;"><img src="https://raw.githubusercontent.com/lucarongaroli/landing-estetica-dea/main/img/Estetica-Dea_caso4.webp" alt="Prima e dopo caso 4" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
     </div>
+    </div><!-- /carousel-wrapper -->
 
     <!-- Pallini indicatori -->
     <div id="ba-dots" style="display:flex; justify-content:center; gap:8px; margin-top:14px;">
@@ -1347,18 +1303,29 @@
 </div>
 
 <script>
-  // ── CAROUSEL DOTS ───────────────────────────────────────────
+  // ── CAROUSEL DOTS + FRECCE ─────────────────────────────────────
   (function() {
     const carousel = document.getElementById('ba-carousel');
     const dots = document.querySelectorAll('.ba-cdot');
-    if (!carousel || !dots.length) return;
-    carousel.addEventListener('scroll', () => {
-      const idx = Math.round(carousel.scrollLeft / carousel.offsetWidth);
+    if (!carousel) return;
+
+    function updateDots() {
+      const idx = Math.round(carousel.scrollLeft / (carousel.offsetWidth * 0.82));
       dots.forEach((d, i) => d.style.opacity = i === idx ? '1' : '.3');
-    }, { passive: true });
+    }
+    carousel.addEventListener('scroll', updateDots, { passive: true });
+
+    window.baScroll = function(dir) {
+      const cardW = carousel.offsetWidth * 0.82 + 14; // 82% + gap
+      carousel.scrollBy({ left: dir * cardW, behavior: 'smooth' });
+    };
   })();
 
   // ── HOTSPOT popups ──────────────────────────────────────────
+  function closeAllHspots() {
+    document.querySelectorAll('.hspot-popup').forEach(p => p.classList.remove('visible'));
+    document.querySelectorAll('.hspot').forEach(b => { b.classList.remove('active'); b.textContent = '+'; });
+  }
   function toggleHspot(btn, popupId) {
     const popup = document.getElementById(popupId);
     const isOpen = popup.classList.contains('visible');
