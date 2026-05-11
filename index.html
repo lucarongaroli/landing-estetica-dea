@@ -1511,24 +1511,12 @@
     };
 
     try {
-      const res = await fetch('https://api.brevo.com/v3/contacts', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'api-key': BREVO_API_KEY
-        },
-        body: JSON.stringify(payload)
-      });
-
-      if (res.ok || res.status === 204) {
-        // Invia email di notifica a Loretta
+      const ok = await brevoUpsertContact(payload, BREVO_API_KEY);
+      if (ok) {
         await sendNotificationEmail({ nome, email, tel: phone, BREVO_API_KEY });
         document.getElementById('form-content').style.display = 'none';
         document.getElementById('form-success').style.display = 'block';
       } else {
-        const err = await res.json().catch(() => ({}));
-        console.error('Brevo error:', res.status, err);
-        console.error('Payload inviato:', JSON.stringify(payload));
         alert('Si è verificato un errore. Riprova o contattaci su WhatsApp.');
         btn.textContent = '✨ Sì, voglio la mia Promo a 49€!';
         btn.style.opacity = '1';
@@ -1541,6 +1529,33 @@
       btn.style.opacity = '1';
       btn.style.pointerEvents = 'auto';
     }
+  }
+
+  async function brevoUpsertContact(payload, apiKey) {
+    const headers = { 'Content-Type': 'application/json', 'api-key': apiKey };
+
+    const res = await fetch('https://api.brevo.com/v3/contacts', {
+      method: 'POST', headers, body: JSON.stringify(payload)
+    });
+    if (res.ok || res.status === 204) return true;
+
+    const err = await res.json().catch(() => ({}));
+
+    // Il numero di telefono è già su un altro contatto: riprova senza PHONE
+    if (err.code === 'duplicate_parameter' && payload.attributes.PHONE) {
+      const fallback = { ...payload, attributes: { ...payload.attributes } };
+      delete fallback.attributes.PHONE;
+      const res2 = await fetch('https://api.brevo.com/v3/contacts', {
+        method: 'POST', headers, body: JSON.stringify(fallback)
+      });
+      if (res2.ok || res2.status === 204) return true;
+      const err2 = await res2.json().catch(() => ({}));
+      console.error('Brevo error (fallback):', res2.status, err2);
+      return false;
+    }
+
+    console.error('Brevo error:', res.status, err);
+    return false;
   }
 
   async function sendNotificationEmail({ nome, email, tel, BREVO_API_KEY }) {
