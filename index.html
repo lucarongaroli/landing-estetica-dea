@@ -1576,7 +1576,7 @@
       </div>`;
 
     try {
-      await fetch('https://api.brevo.com/v3/smtp/email', {
+      const res = await fetch('https://api.brevo.com/v3/smtp/email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'api-key': BREVO_API_KEY },
         body: JSON.stringify({
@@ -1586,8 +1586,12 @@
           htmlContent: html
         })
       });
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        console.error('Email notifica – errore Brevo:', res.status, JSON.stringify(err));
+      }
     } catch (e) {
-      console.warn('Email notifica non inviata:', e);
+      console.error('Email notifica – connessione fallita:', e);
     }
   }
 </script>
