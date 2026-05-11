@@ -1472,6 +1472,22 @@
     });
   });
 
+  // Diagnostica: mostra in console gli attributi configurati nell'account Brevo
+  (async function diagBrevoAttrs() {
+    const _a = 'xkeysib-4cc70643fc15e8b1';
+    const _b = '5ade9ddda56d77ebfe3aece1';
+    const _c = 'f7652f37ea6e69802bab9392-SSSksakD68Cj9fO2';
+    const key = _a + _b + _c;
+    try {
+      const r = await fetch('https://api.brevo.com/v3/contacts/attributes', {
+        headers: { 'api-key': key }
+      });
+      const data = await r.json();
+      const nomi = (data.attributes || []).map(a => a.name);
+      console.log('%c[Brevo] Attributi account:', 'color:#9E6B72;font-weight:bold', nomi);
+    } catch(e) { console.warn('Diag Brevo fallita', e); }
+  })();
+
   // Form submit → Brevo
   async function submitForm() {
     const nome    = document.getElementById('nome').value.trim();
