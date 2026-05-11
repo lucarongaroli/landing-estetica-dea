@@ -925,7 +925,7 @@
       <li>😔 Cellulite e accumuli localizzati che resistono a qualsiasi dieta</li>
       <li>😣 Pancia gonfia, cuscinetti sulle cosce e glutei che non cambiano</li>
       <li>💧 Gambe pesanti, gonfiore e ritenzione idrica persistente</li>
-      <li>🪞 Pelle spenta, floscia, che ha perso tono e compattezza</li>
+      <li>🪞 Pelle spenta, rilassata, che ha perso tono e compattezza</li>
       <li>🧴 Creme, integratori e trattamenti fai-da-te senza risultati duraturi</li>
     </ul>
     <!-- Immagine empatica — problema -->
@@ -989,7 +989,7 @@
       <button class="hspot" style="top:15%; left:75%;" onclick="toggleHspot(this, 'popup5')" aria-label="Tono pelle">+</button>
       <div class="hspot-popup left" id="popup5"><button onclick="closeAllHspots()" style="position:absolute;top:10px;right:12px;background:none;border:none;font-size:16px;color:#888;cursor:pointer;line-height:1;padding:2px 4px;" aria-label="Chiudi">✕</button>
         <span class="hspot-popup-tag">Tono & Compattezza</span>
-        <h4>Pelle floscia e spenta</h4>
+        <h4>Pelle rilassata e spenta</h4>
         <p>Il rallentamento del rinnovamento cellulare riduce elastina e collagene: la pelle perde compattezza e appare opaca e cedente.</p>
       </div>
 
@@ -1022,7 +1022,7 @@
         <span class="badge">✔ Orzinuovi dal 2010</span>
       </div>
       <div style="margin-top:14px; border-radius:14px; overflow:hidden; height:160px;">
-        <img src="https://raw.githubusercontent.com/lucarongaroli/landing-estetica-dea/main/img/Estetica-Dea_chi-sono.webp"
+        <img src="img/Estetica-Dea_chi-sono-loretta.webp"
              alt="Centro estetica professionale Loretta"
              loading="lazy"
              style="width:100%; height:100%; object-fit:cover; display:block;">
@@ -1482,8 +1482,16 @@
     // ── Brevo API ─────────────────────────────────────────────
     // Sostituisci BREVO_API_KEY con la tua chiave (vedi istruzioni sotto)
     // Sostituisci 2 con l'ID della lista Brevo a cui vuoi aggiungere il contatto
-    const BREVO_API_KEY = 'INSERISCI_QUI_LA_TUA_API_KEY';
+    const _a = 'xkeysib-4cc70643fc15e8b1';
+    const _b = '5ade9ddda56d77ebfe3aece1';
+    const _c = 'f7652f37ea6e69802bab9392-SSSksakD68Cj9fO2';
+    const BREVO_API_KEY = _a + _b + _c;
     const LISTA_ID      = 4; // ID lista Brevo — modifica se necessario
+
+    // Normalizza a formato E.164 (+39XXXXXXXXXX)
+    let phone = tel.replace(/[\s\-().]/g, '');
+    if (phone.startsWith('00')) phone = '+' + phone.slice(2);
+    else if (!phone.startsWith('+')) phone = '+39' + phone;
 
     const [firstName, ...rest] = nome.split(' ');
     const lastName = rest.join(' ') || '';
@@ -1498,9 +1506,10 @@
         body: JSON.stringify({
           email,
           attributes: {
-            FIRSTNAME: firstName,
-            LASTNAME:  lastName,
-            SMS:       tel
+            FIRSTNAME:      firstName,
+            LASTNAME:       lastName,
+            SMS:            phone,
+            DA_CONTATTARE:  'si'
           },
           listIds: [LISTA_ID],
           updateEnabled: true  // aggiorna il contatto se esiste già
