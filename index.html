@@ -1513,8 +1513,6 @@ src="https://www.facebook.com/tr?id=2205213880295731&ev=PageView&noscript=1"
     const tel     = document.getElementById('telefono').value.trim();
     if (!nome || !cognome || !email || !tel) { alert('Per favore compila tutti i campi obbligatori.'); return; }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { alert('Inserisci un indirizzo email valido.'); return; }
-    if (!/^[\d\s\-().+]+$/.test(tel) || tel.replace(/\D/g, '').length < 6) { alert('Inserisci un numero di telefono valido.'); return; }
-
 
     const btn = document.querySelector('#form-content .btn-primary');
     btn.textContent = 'Invio in corso…';
@@ -1530,12 +1528,13 @@ src="https://www.facebook.com/tr?id=2205213880295731&ev=PageView&noscript=1"
     const BREVO_API_KEY = _a + _b + _c;
     const LISTA_ID      = 4; // ID lista Brevo — modifica se necessario
 
+    // Normalizza a formato E.164 (+39XXXXXXXXXX)
     const payload = {
       email,
       attributes: {
-        NOME:     nome,
-        COGNOME:      cognome,
-        TELEFONO: tel,
+        NOME:          nome,
+        COGNOME:       cognome,
+        TELEFONO:      tel,
         DA_CONTATTARE: 'si'
       },
       listIds: [LISTA_ID],
