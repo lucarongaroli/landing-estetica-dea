@@ -1513,7 +1513,7 @@ src="https://www.facebook.com/tr?id=2205213880295731&ev=PageView&noscript=1"
     const tel     = document.getElementById('telefono').value.trim();
     if (!nome || !cognome || !email || !tel) { alert('Per favore compila tutti i campi obbligatori.'); return; }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { alert('Inserisci un indirizzo email valido.'); return; }
-    if (!/^[\d\s\-().+]+$/.test(tel)) { alert('Inserisci un numero di telefono valido.'); return; }
+    if (!/^[\d\s\-().+]+$/.test(tel) || tel.replace(/\D/g, '').length < 6) { alert('Inserisci un numero di telefono valido.'); return; }
 
 
     const btn = document.querySelector('#form-content .btn-primary');
@@ -1530,11 +1530,6 @@ src="https://www.facebook.com/tr?id=2205213880295731&ev=PageView&noscript=1"
     const BREVO_API_KEY = _a + _b + _c;
     const LISTA_ID      = 4; // ID lista Brevo — modifica se necessario
 
-    // Normalizza a formato E.164 (+39XXXXXXXXXX)
-    let phone = tel.replace(/[\s\-().]/g, '');
-    if (phone.startsWith('00')) phone = '+' + phone.slice(2);
-    else if (!phone.startsWith('+')) phone = '+39' + phone;
-
     const payload = {
       email,
       attributes: {
@@ -1550,7 +1545,7 @@ src="https://www.facebook.com/tr?id=2205213880295731&ev=PageView&noscript=1"
     try {
       const ok = await brevoUpsertContact(payload, BREVO_API_KEY);
       if (ok) {
-        await sendNotificationEmail({ nome: nome + ' ' + cognome, email, tel: phone, BREVO_API_KEY });
+        await sendNotificationEmail({ nome: nome + ' ' + cognome, email, tel: tel, BREVO_API_KEY });
         fbq('track', 'Lead');
         document.getElementById('form-content').style.display = 'none';
         document.getElementById('form-success').style.display = 'block';
