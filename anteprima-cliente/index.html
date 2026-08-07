@@ -92,6 +92,18 @@
   .bcard h3{font-size:1.12rem;margin-bottom:8px}
   .bcard p{font-size:.9rem;color:var(--muted)}
 
+  /* ---------- Chi siamo ---------- */
+  .about h2 em{font-style:italic;color:var(--primary)}
+  .about-card{max-width:760px;margin:0 auto;background:#fff;border:1px solid #eef2f1;border-radius:var(--radius);box-shadow:var(--shadow);padding:32px}
+  .about-head{display:flex;align-items:center;gap:16px;margin-bottom:18px}
+  .about-head .av{width:64px;height:64px;border-radius:50%;background:var(--ice);color:var(--primary-dark);display:grid;place-items:center;font-family:'Playfair Display';font-size:1.7rem;font-weight:600;border:2px solid var(--accent);flex:0 0 auto;overflow:hidden}
+  .about-head b{font-family:'Playfair Display';font-size:1.2rem}
+  .about-head small{display:block;color:var(--muted);font-size:.85rem}
+  .about-card p{color:var(--muted);margin-bottom:12px;font-size:.98rem}
+  .about-chips{display:flex;flex-wrap:nowrap;gap:8px;margin-top:18px}
+  .about-chips span{background:var(--ice);color:var(--primary-dark);border-radius:40px;padding:8px 13px;font-size:.78rem;font-weight:500;white-space:nowrap}
+  .about-head .av img{width:100%;height:100%;border-radius:50%;object-fit:cover}
+
   /* ---------- Split feature (mask / analyzer / quality) ---------- */
   .split{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center}
   .split.rev .txt{order:2}
@@ -198,7 +210,8 @@
   /* Floating WhatsApp button */
   .wa-float{position:fixed;right:22px;bottom:22px;z-index:90;display:inline-flex;align-items:center;gap:11px;background:linear-gradient(135deg,#29d366,#128c4b);color:#fff;font-weight:600;font-size:1rem;padding:14px 24px 14px 20px;border-radius:60px;box-shadow:0 12px 30px rgba(18,140,75,.45);transition:transform .18s ease,box-shadow .18s ease}
   .wa-float:hover{transform:translateY(-2px);box-shadow:0 16px 38px rgba(18,140,75,.55)}
-  .wa-float .wa-ic{width:30px;height:30px;background:#fff;color:#128c4b;border-radius:50%;display:grid;place-items:center;flex:0 0 auto}
+  .wa-float .wa-ic{display:grid;place-items:center;flex:0 0 auto;color:#fff}
+  .wa-float .wa-ic svg{width:24px;height:24px}
   /* Barra CTA mobile fissa in basso */
   .mobile-cta{display:none}
 
@@ -212,6 +225,7 @@
     .benefits-grid{grid-template-columns:repeat(2,1fr)}
     .split{grid-template-columns:1fr;gap:28px}
     .split.rev .txt{order:0}
+    .about-chips{flex-wrap:wrap}
     .split img{max-width:460px;margin-inline:auto}
     .suit-grid{grid-template-columns:1fr 1fr}
     .offer-card{grid-template-columns:1fr}
@@ -309,6 +323,31 @@
       <div class="bcard"><div class="ic">✨</div><h3>Rassoda &amp; tonifica</h3><p>Rassoda e tonifica i tessuti per una pelle più compatta.</p></div>
       <div class="bcard"><div class="ic">🌟</div><h3>Illumina</h3><p>Illumina l'incarnato e favorisce la rigenerazione cellulare.</p></div>
       <div class="bcard"><div class="ic">❄️</div><h3>Freschezza</h3><p>Previene i segni dell'invecchiamento e dona una piacevole sensazione di benessere.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CHI SIAMO -->
+<section class="about">
+  <div class="wrap">
+    <div class="sec-head center">
+      <span class="eyebrow">Chi siamo</span>
+      <div class="accentline"></div>
+      <h2>Ciao, sono <em>Loretta</em></h2>
+    </div>
+    <div class="about-card">
+      <div class="about-head">
+        <div class="av"><img src="https://www.esteticadeaorzinuovi.it/img/Estetica-Dea_Loretta.webp" alt="Loretta"></div>
+        <div><b>Loretta</b><small>Titolare · Centro Estetica Dea, Orzinuovi (BS)</small></div>
+      </div>
+      <p>Da anni mi prendo cura della pelle delle donne e degli uomini di Orzinuovi, aiutandoli a <strong>ritrovare una pelle sana, luminosa e in equilibrio</strong>.</p>
+      <p>Ho scelto <strong>Cryo Skin</strong> e la cosmeceutica <strong>Janssen Cosmetics</strong> perché uniscono tecnologia e principi attivi professionali per risultati visibili già dalla prima seduta, là dove le creme da sole non arrivano.</p>
+      <div class="about-chips">
+        <span>✔ Cura della pelle</span>
+        <span>✔ Tecnologie professionali</span>
+        <span>✔ Janssen Cosmetics</span>
+        <span>✔ Orzinuovi dal 2010</span>
+      </div>
     </div>
   </div>
 </section>
