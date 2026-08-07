@@ -40,6 +40,7 @@
   .btn.gold{background:linear-gradient(135deg,#d3a962,#b9853f);box-shadow:0 12px 26px rgba(185,133,63,.34)}
   .btn.wa{background:linear-gradient(135deg,#25d366,#128c4b);box-shadow:0 12px 26px rgba(18,140,75,.3)}
   .reassure{font-size:.86rem;color:var(--muted);margin-top:10px}
+  .btn .was{text-decoration:line-through;opacity:.7;font-weight:400;margin-right:4px}
 
   /* ---------- Promo bar ---------- */
   .promobar{position:sticky;top:0;z-index:70;background:linear-gradient(90deg,var(--primary-dark),var(--primary));color:#fff;text-align:center;padding:11px 14px;font-size:.92rem;font-weight:500;display:flex;gap:14px;justify-content:center;align-items:center;flex-wrap:wrap}
@@ -264,7 +265,7 @@
       <span class="brandtag">❄️ Promo esclusiva di prova</span>
       <h1>Nuova luce per la tua pelle con <em>Cryo Skin</em></h1>
       <p class="lead">Dopo i mesi estivi la pelle è spenta, disidratata e ha perso tono. Con il trattamento viso e collo <strong>Cryo Skin</strong> ritrovi idratazione, elasticità e luminosità già dalla prima seduta — e <strong>questo mese puoi provarlo a soli 59€ anziché 130€</strong>.</p>
-      <a href="#prenota" class="btn">✨ Prenota la mia consulenza a 59€</a>
+      <a href="#prenota" class="btn">✨ Prenota la mia consulenza a <span class="was">130€</span> 59€</a>
       <div class="reassure">🔒 Nessun pagamento ora · Ti contattiamo noi per fissare l'appuntamento</div>
       <div class="pricebox">
         <span class="old">130€</span>
@@ -449,7 +450,7 @@
           <li>Cosmetici professionali Janssen Cosmetics</li>
         </ul>
         <div class="bonus">🎁 <strong>Bonus esclusivo:</strong> chi sceglie di intraprendere un percorso personalizzato riceve uno sconto del <strong>30%</strong> sul programma consigliato.</div>
-        <a href="#contatti" class="btn gold" style="margin-top:22px">Prenota ora a 59€</a>
+        <a href="#contatti" class="btn gold" style="margin-top:22px">Prenota ora a <span class="was">130€</span> 59€</a>
       </div>
       <div class="right">
         <span class="old">130€</span>
@@ -564,7 +565,7 @@
       </div>
       <div class="field"><label>Indirizzo email</label><input type="email" name="email" placeholder="Es. giulia@email.it" required></div>
       <div class="field"><label>Numero di telefono</label><input type="tel" name="tel" placeholder="+39 333 123 4567" required></div>
-      <button type="submit" class="btn gold">✨ Sì, voglio la mia Promo a 59€!</button>
+      <button type="submit" class="btn gold">✨ Sì, voglio la mia Promo a <span class="was">130€</span> 59€!</button>
       <p class="privacy">🔒 I tuoi dati sono al sicuro e non verranno condivisi con terzi. Inviando il modulo accetti la nostra <a href="#">Privacy Policy</a>. Nessuno spam, solo una chiamata dal nostro centro.</p>
     </form>
     <div class="form-success" id="promoOk">
@@ -596,7 +597,7 @@
 
 <!-- Barra prenota fissa (solo mobile) -->
 <div class="mobile-cta">
-  <a href="#contatti" class="btn gold">✨ Prenota a 59€ — Solo questo mese</a>
+  <a href="#contatti" class="btn gold">✨ Prenota a <span class="was">130€</span> 59€ — Solo questo mese</a>
 </div>
 
 <!-- Floating WhatsApp button (sempre visibile) -->
