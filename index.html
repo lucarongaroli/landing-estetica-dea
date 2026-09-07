@@ -664,7 +664,7 @@
       var _b='5ade9ddda56d77ebfe3aece1';
       var _c='f7652f37ea6e69802bab9392-SSSksakD68Cj9fO2';
       var BREVO_API_KEY=_a+_b+_c;
-      var LISTA_ID=4;
+      var LISTA_ID=9;
       var payload={ email:email, attributes:{ NOME:nome, COGNOME:cognome, TELEFONO:tel, DA_CONTATTARE:'si' }, listIds:[LISTA_ID], updateEnabled:true };
       try{
         var ok=await brevoUpsertContact(payload,BREVO_API_KEY);
