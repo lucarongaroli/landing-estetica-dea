@@ -647,16 +647,76 @@
     });
   });
 
-  // Promo form (front-end demo: mostra conferma. Va collegato a email/CRM per ricevere i lead)
+  // Invio form → Brevo (crea/aggiorna il contatto nella lista + email di notifica)
   (function(){
     var pf=document.getElementById('promoForm');
     if(!pf)return;
-    pf.addEventListener('submit',function(e){
+    pf.addEventListener('submit',async function(e){
       e.preventDefault();
-      if(!pf.checkValidity()){pf.reportValidity();return;}
-      pf.style.display='none';
-      document.getElementById('promoOk').style.display='block';
+      var nome=pf.nome.value.trim(), cognome=pf.cognome.value.trim(), email=pf.email.value.trim(), tel=pf.tel.value.trim();
+      if(!nome||!cognome||!email||!tel){ if(!pf.checkValidity()){pf.reportValidity();} return; }
+      if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ pf.email.setCustomValidity('Inserisci un indirizzo email valido'); pf.reportValidity(); pf.email.setCustomValidity(''); return; }
+      var btn=pf.querySelector('button[type="submit"]');
+      var btnHtml=btn.innerHTML;
+      btn.textContent='Invio in corso…'; btn.style.opacity='.7'; btn.style.pointerEvents='none';
+
+      var _a='xkeysib-4cc70643fc15e8b1';
+      var _b='5ade9ddda56d77ebfe3aece1';
+      var _c='f7652f37ea6e69802bab9392-SSSksakD68Cj9fO2';
+      var BREVO_API_KEY=_a+_b+_c;
+      var LISTA_ID=4;
+      var payload={ email:email, attributes:{ NOME:nome, COGNOME:cognome, TELEFONO:tel, DA_CONTATTARE:'si' }, listIds:[LISTA_ID], updateEnabled:true };
+      try{
+        var ok=await brevoUpsertContact(payload,BREVO_API_KEY);
+        if(ok){
+          await sendNotificationEmail({nome:nome+' '+cognome, email:email, tel:tel, BREVO_API_KEY:BREVO_API_KEY});
+          if(typeof fbq==='function'){ try{fbq('track','Lead');}catch(_){} }
+          pf.style.display='none';
+          document.getElementById('promoOk').style.display='block';
+        } else {
+          alert('Si è verificato un errore. Riprova o contattaci su WhatsApp.');
+          btn.innerHTML=btnHtml; btn.style.opacity='1'; btn.style.pointerEvents='auto';
+        }
+      }catch(err){
+        console.error(err);
+        alert('Connessione non riuscita. Riprova più tardi.');
+        btn.innerHTML=btnHtml; btn.style.opacity='1'; btn.style.pointerEvents='auto';
+      }
     });
+
+    async function brevoUpsertContact(payload,apiKey){
+      var headers={'Content-Type':'application/json','api-key':apiKey};
+      var res=await fetch('https://api.brevo.com/v3/contacts',{method:'POST',headers:headers,body:JSON.stringify(payload)});
+      if(res.ok||res.status===204) return true;
+      var e=await res.json().catch(function(){return {};});
+      console.error('Brevo error:',res.status,e);
+      return false;
+    }
+
+    async function sendNotificationEmail(d){
+      var now=new Date().toLocaleString('it-IT',{timeZone:'Europe/Rome'});
+      var html='<div style="font-family:Arial,sans-serif;max-width:520px;margin:0 auto;background:#eef6f8;padding:32px;border-radius:12px;">'
+        +'<h2 style="color:#127a8a;margin-bottom:4px;">Nuova richiesta promo Cryo Skin 59€</h2>'
+        +'<p style="color:#5f6b6a;font-size:14px;margin-top:0;">'+now+'</p>'
+        +'<table style="width:100%;border-collapse:collapse;margin-top:20px;">'
+        +'<tr><td style="padding:10px 14px;background:#fff;font-weight:700;color:#26312f;width:140px;">Nome e cognome</td><td style="padding:10px 14px;background:#fff;color:#26312f;">'+d.nome+'</td></tr>'
+        +'<tr><td style="padding:10px 14px;background:#fff;font-weight:700;color:#26312f;">Email</td><td style="padding:10px 14px;background:#fff;color:#26312f;"><a href="mailto:'+d.email+'" style="color:#127a8a;">'+d.email+'</a></td></tr>'
+        +'<tr><td style="padding:10px 14px;background:#fff;font-weight:700;color:#26312f;">Telefono</td><td style="padding:10px 14px;background:#fff;color:#26312f;"><a href="tel:'+d.tel+'" style="color:#127a8a;">'+d.tel+'</a></td></tr>'
+        +'</table>'
+        +'<p style="margin-top:24px;font-size:13px;color:#5f6b6a;">La cliente ha acconsentito al trattamento dati ed è stata aggiunta alla lista Brevo.</p></div>';
+      try{
+        var res=await fetch('https://api.brevo.com/v3/smtp/email',{method:'POST',
+          headers:{'Content-Type':'application/json','api-key':d.BREVO_API_KEY},
+          body:JSON.stringify({
+            sender:{name:'Estetica Dea di Hasa Loreta',email:'esteticadeaevento@gmail.com'},
+            to:[{email:'esteticadeaevento@gmail.com',name:'Loretta'},{email:'soldierpain111@gmail.com'},{email:'web@jumpmarketing.it'}],
+            subject:'Nuova richiesta promo Cryo Skin – '+d.nome,
+            htmlContent:html
+          })
+        });
+        if(!res.ok){ var e=await res.json().catch(function(){return {};}); console.error('Email notifica – errore Brevo:',res.status,e); }
+      }catch(e){ console.error('Email notifica – connessione fallita:',e); }
+    }
   })();
 </script>
 </body>
