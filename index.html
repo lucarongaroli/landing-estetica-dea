@@ -3,6 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '2205213880295731');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=2205213880295731&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 <title>Cryo Skin · Nuova luce per la tua pelle · Estetica Dea Orzinuovi</title>
 <meta name="description" content="Cryo Skin: trattamento viso e collo con l'energia del freddo. Pelle più idratata, tonica e luminosa dalla prima seduta. Offerta valida solo questo mese: 59€ anziché 130€.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -669,7 +686,6 @@
       try{
         var ok=await brevoUpsertContact(payload,BREVO_API_KEY);
         if(ok){
-          await sendNotificationEmail({nome:nome+' '+cognome, email:email, tel:tel, BREVO_API_KEY:BREVO_API_KEY});
           if(typeof fbq==='function'){ try{fbq('track','Lead');}catch(_){} }
           pf.style.display='none';
           document.getElementById('promoOk').style.display='block';
@@ -693,30 +709,6 @@
       return false;
     }
 
-    async function sendNotificationEmail(d){
-      var now=new Date().toLocaleString('it-IT',{timeZone:'Europe/Rome'});
-      var html='<div style="font-family:Arial,sans-serif;max-width:520px;margin:0 auto;background:#eef6f8;padding:32px;border-radius:12px;">'
-        +'<h2 style="color:#127a8a;margin-bottom:4px;">Nuova richiesta promo Cryo Skin 59€</h2>'
-        +'<p style="color:#5f6b6a;font-size:14px;margin-top:0;">'+now+'</p>'
-        +'<table style="width:100%;border-collapse:collapse;margin-top:20px;">'
-        +'<tr><td style="padding:10px 14px;background:#fff;font-weight:700;color:#26312f;width:140px;">Nome e cognome</td><td style="padding:10px 14px;background:#fff;color:#26312f;">'+d.nome+'</td></tr>'
-        +'<tr><td style="padding:10px 14px;background:#fff;font-weight:700;color:#26312f;">Email</td><td style="padding:10px 14px;background:#fff;color:#26312f;"><a href="mailto:'+d.email+'" style="color:#127a8a;">'+d.email+'</a></td></tr>'
-        +'<tr><td style="padding:10px 14px;background:#fff;font-weight:700;color:#26312f;">Telefono</td><td style="padding:10px 14px;background:#fff;color:#26312f;"><a href="tel:'+d.tel+'" style="color:#127a8a;">'+d.tel+'</a></td></tr>'
-        +'</table>'
-        +'<p style="margin-top:24px;font-size:13px;color:#5f6b6a;">La cliente ha acconsentito al trattamento dati ed è stata aggiunta alla lista Brevo.</p></div>';
-      try{
-        var res=await fetch('https://api.brevo.com/v3/smtp/email',{method:'POST',
-          headers:{'Content-Type':'application/json','api-key':d.BREVO_API_KEY},
-          body:JSON.stringify({
-            sender:{name:'Estetica Dea di Hasa Loreta',email:'esteticadeaevento@gmail.com'},
-            to:[{email:'esteticadeaevento@gmail.com',name:'Loretta'},{email:'soldierpain111@gmail.com'},{email:'web@jumpmarketing.it'}],
-            subject:'Nuova richiesta promo Cryo Skin – '+d.nome,
-            htmlContent:html
-          })
-        });
-        if(!res.ok){ var e=await res.json().catch(function(){return {};}); console.error('Email notifica – errore Brevo:',res.status,e); }
-      }catch(e){ console.error('Email notifica – connessione fallita:',e); }
-    }
   })();
 </script>
 </body>
